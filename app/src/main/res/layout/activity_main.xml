@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+    <Button
+        android:id="@+id/btnSeeJob"
+        android:layout_width="316dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/roboto_bold"
+        android:paddingLeft="20pt"
+        android:paddingRight="20pt"
+        android:paddingTop="5pt"
+        android:paddingBottom="5pt"
+        android:textColor="@color/white"
+        android:text="See All Job Post"
+        android:textSize="20dp"
+        android:background="@drawable/btn_activity_main"/>
+    <Button
+        android:id="@+id/btnPostJob"
+        android:layout_width="316dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/white"
+        android:text="Post A Job"
+        android:textSize="20dp"
+        android:paddingLeft="36pt"
+        android:paddingRight="36pt"
+        android:paddingTop="5pt"
+        android:paddingBottom="5pt"
+        android:background="@drawable/btn_activity_main"/>
+</LinearLayout>

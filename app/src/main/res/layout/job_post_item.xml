@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    android:elevation="5dp"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_radius_job_item">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Job Title"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/edtJobTitle"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="17 July 2019"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:id="@+id/job_date"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:id="@+id/edtJobDesc"
+            android:maxLines="3"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skills"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:id="@+id/edtSkill"/>
+
+        <TextView
+            android:id="@+id/edtSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Sallary"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Location"
+            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+
