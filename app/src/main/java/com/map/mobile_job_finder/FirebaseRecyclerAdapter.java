@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+
 public abstract class FirebaseRecyclerAdapter <T, T1> extends RecyclerView.Adapter {
     public FirebaseRecyclerAdapter(Class<T> dataClass, int alljobpost, Class<T1> allJobPostViewHolderClass, DatabaseReference mAllJobPost) {
     }

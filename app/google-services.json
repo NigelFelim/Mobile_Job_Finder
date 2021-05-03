@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "778596101607",
+    "project_id": "cari-kerja-android",
+    "storage_bucket": "cari-kerja-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778596101607:android:a0ae1de7158624a6166142",
+        "android_client_info": {
+          "package_name": "com.map.mobile_job_finder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778596101607-to8ban2lv6ouq62526h0kef6eltcvd7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.map.mobile_job_finder",
+            "certificate_hash": "f9f2c3bf8c59589792df3e01bfdd0fd692f24763"
+          }
+        },
+        {
+          "client_id": "778596101607-q7fqs3kr4ull2tjhbi853hpac2o7nr9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjartMSSgHWMIaGY0POEibvPPM5SzD_yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778596101607-q7fqs3kr4ull2tjhbi853hpac2o7nr9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
