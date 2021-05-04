@@ -51,7 +51,7 @@ public class All_JobActivity extends AppCompatActivity {
         toolbar =  findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("All Job Post");
+        getSupportActionBar().setTitle("All Job Post");
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
