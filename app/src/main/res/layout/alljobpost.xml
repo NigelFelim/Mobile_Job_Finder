@@ -15,13 +15,14 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/all_job_post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text =" Job Title"
-            android:id="@+id/all_job_post_title"
-            android:textAppearance="?android:textAppearanceLarge"
             android:layout_margin="5dp"
-            android:textColor="@android:color/black"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text=" Job Title"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:layout_width="match_parent"
@@ -29,14 +30,16 @@
             android:layout_margin="5dp"
             android:text="30 Maret 2021"
             android:id="@+id/all_job_post_date"
+            android:fontFamily="@font/roboto_medium"
             android:textAppearance="?android:textAppearanceSmall"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:padding="5dp"
+            android:paddingTop="5dp"
             android:text="Description"
+            android:fontFamily="@font/roboto_medium"
             android:maxLines="3"
             android:id="@+id/all_job_post_description"
             android:textAppearance="?android:textAppearanceMedium"
@@ -47,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Skills"
+            android:fontFamily="@font/roboto_medium"
             android:id="@+id/all_job_post_skills"
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="@android:color/black"/>
@@ -56,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Sallary"
+            android:fontFamily="@font/roboto_medium"
             android:id="@+id/all_job_post_sallary"
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="@android:color/black"/>
