@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile_JobFinder">
-        <activity android:name=".PostJobActivity"></activity>
+        <activity android:name=".JobDetailsActivity"></activity>
+        <activity android:name=".PostJobActivity" />
         <activity android:name=".InsertJobPostActivity" />
         <activity android:name=".All_JobActivity" />
         <activity android:name=".RegisterActivity" />
