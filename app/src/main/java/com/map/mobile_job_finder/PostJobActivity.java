@@ -6,25 +6,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.map.mobile_job_finder.Model.Data;
 
 public class PostJobActivity extends AppCompatActivity {
     private FloatingActionButton faBtn;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    //private RecyclerView recyclerView;
 
-    //private FirebaseAuth mAuth;
-    // private DatabaseReference JobPostDataBase;
+    //recycle
+    private RecyclerView recyclerView;
+    //firebase
+    private FirebaseAuth mAuth;
+    private DatabaseReference JobPostDataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +86,21 @@ public class PostJobActivity extends AppCompatActivity {
             }
         });
         // end toolbar
+        mAuth= FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
+        String uId = mUser.getUid();
+
+        JobPostDataBase=FirebaseDatabase.getInstance().getReference().child("Job Post").child(uId);
+
+        recyclerView=findViewById(R.id.recycle_job_post);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);
+        layoutManager.setReverseLayout(true);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        //fabtn
         faBtn = findViewById(R.id.fab_btn);
         faBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +116,61 @@ public class PostJobActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(JobPostDataBase, Data.class).build();FirebaseRecyclerAdapter<Data, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Data, MyViewHolder>(firebaseRecyclerOptions) {
+
+            @NonNull
+            @Override
+            public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.job_post_item,parent,false);
+                return new MyViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull MyViewHolder viewHolder, int i, @NonNull Data model) {
+
+                viewHolder.setJobTitle(model.getTitle());
+                viewHolder.setJobDate(model.getDate());
+                viewHolder.setJobDescription(model.getDescription());
+                viewHolder.setJobSkills(model.getSkills());
+                viewHolder.setJobSalary(model.getSalary());
+            }
+
+        };
+        adapter.startListening();
+
+        recyclerView.setAdapter(adapter);
+    }
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        View myview;
+        public MyViewHolder(View itemView){
+            super(itemView);
+            myview=itemView;
+        }
+        public void setJobTitle(String title){
+            TextView mTitle=myview.findViewById(R.id.edtJobTitlePost);
+            mTitle.setText(title);
+        }
+        public void setJobDate(String date){
+            TextView mDate=myview.findViewById(R.id.job_datePost);
+            mDate.setText(date);
+        }
+        public void setJobDescription(String desc){
+            TextView mDesc=myview.findViewById(R.id.edtJobDescPost);
+            mDesc.setText(desc);
+        }
+        public void setJobSkills(String skills){
+            TextView mSkills=myview.findViewById(R.id.edtSkillPost);
+            mSkills.setText(skills);
+        }
+        public void setJobSalary(String salary){
+            TextView mSalary=myview.findViewById(R.id.edtSalarypost);
+            mSalary.setText(salary);
         }
     }
 }

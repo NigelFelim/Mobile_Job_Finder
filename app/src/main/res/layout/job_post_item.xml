@@ -21,7 +21,7 @@
             android:maxLines="1"
             android:padding="10dp"
             android:textColor="@android:color/black"
-            android:id="@+id/edtJobTitle"/>
+            android:id="@+id/edtJobTitlePost"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:textAppearance="?android:textAppearanceSmall"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:id="@+id/job_date"/>
+            android:id="@+id/job_datePost"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:textAppearance="?android:textAppearanceMedium"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:id="@+id/edtJobDesc"
+            android:id="@+id/edtJobDescPost"
             android:maxLines="3"/>
 
         <TextView
@@ -50,10 +50,10 @@
             android:maxLines="1"
             android:textColor="@color/black"
             android:padding="10dp"
-            android:id="@+id/edtSkill"/>
+            android:id="@+id/edtSkillPost"/>
 
         <TextView
-            android:id="@+id/edtSalary"
+            android:id="@+id/edtSalarypost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
