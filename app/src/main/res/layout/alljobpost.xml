@@ -8,9 +8,11 @@
     android:layout_margin="5dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="400dp"
+        android:layout_height="230dp"
+        android:orientation="vertical"
+        android:background="@drawable/corner_radius_post_job"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="match_parent"

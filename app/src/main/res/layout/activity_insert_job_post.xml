@@ -4,146 +4,214 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/insert_job_Drawlayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_main"
 
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    tools:context=".InsertJobPostActivity">
+    tools:context=".InsertJobPostActivity"
+    tools:openDrawer="start">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar" android:id="@+id/insert_job_toolbar"/>
-        <ScrollView
+        <include
+            android:id="@+id/insert_job_toolbar"
+            layout="@layout/toolbar" />
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="Post Job"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="36dp"
+            android:textColor="@color/white"
+            android:paddingLeft="10dp"/>
+
+        <ScrollView
+            android:layout_width="380dp"
+            android:layout_height="280dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/corner_radius_post_job"
+            android:padding="20dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Job Title: "
+                            android:layout_height="50dp"
+                            android:fontFamily="@font/roboto_bold"
                             android:padding="7dp"
-                            android:textAppearance="?android:textAppearanceMedium"/>
+                            android:text="Job Title : "
+                            android:textColor="@color/black"
+                            android:textAppearance="?android:textAppearanceMedium" />
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3">
+
                         <EditText
                             android:id="@+id/edtJobTitle"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Isi Judul Pekerjaan"/>
+                            android:fontFamily="@font/roboto_bold"
+                            android:textColor="@color/black"
+                            android:layout_height="50dp"
+                            android:hint="Isi Judul Pekerjaan" />
                     </RelativeLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:padding="2dp"
                             android:text="Job Description: "
-                            android:padding="7dp"
-                            android:textAppearance="?android:textAppearanceMedium"/>
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/black" />
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3">
+
                         <EditText
                             android:id="@+id/edtJobDesc"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Isi Deskripsi Pekerjaan"/>
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_height="70dp"
+                            android:hint="Isi Deskripsi Pekerjaan" />
                     </RelativeLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Skill: "
+                            android:fontFamily="@font/roboto_bold"
+                            android:textColor="@color/black"
                             android:padding="7dp"
-                            android:textAppearance="?android:textAppearanceMedium"/>
+                            android:text="Skill: "
+                            android:textAppearance="?android:textAppearanceMedium" />
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3">
+
                         <EditText
                             android:id="@+id/edtSkill"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Isi Skill Pekerjaan yang dibutuhkan"/>
+                            android:fontFamily="@font/roboto_bold"
+                            android:hint="Isi Skill Pekerjaan yang dibutuhkan" />
                     </RelativeLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Job Salary : "
+                            android:fontFamily="@font/roboto_bold"
+                            android:textColor="@color/black"
                             android:padding="7dp"
-                            android:textAppearance="?android:textAppearanceMedium"/>
+                            android:text="Job Salary : "
+                            android:textAppearance="?android:textAppearanceMedium" />
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3">
+
                         <EditText
                             android:id="@+id/edtSalary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Isi Gaji Pekerjaan"/>
+                            android:hint="Isi Gaji Pekerjaan"
+                            android:fontFamily="@font/roboto_bold"/>
                     </RelativeLayout>
                 </LinearLayout>
-                <Button
-                    android:id="@+id/btnPost_Job"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
-                    android:textAppearance="?android:textAppearanceMedium"
-                    android:text="Post Job"/>
+
 
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+<LinearLayout
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_marginTop="200dp"
+    android:gravity="center">
+    <Button
+        android:id="@+id/btnPost_Job"
+        android:layout_width="316dp"
+        android:layout_height="54dp"
+
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:paddingLeft="36pt"
+        android:paddingRight="36pt"
+        android:paddingTop="5pt"
+        android:paddingBottom="5pt"
+        android:background="@drawable/btn_activity_main"
+        android:text="Post Job"
+        android:textAppearance="?android:textAppearanceLarge" />
+</LinearLayout>
+
+
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
         android:id="@+id/insert_nav_view"
-        android:layout_gravity ="start"
+        android:layout_width="wrap_content"
+        android:layout_height="730dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
         app:headerLayout="@layout/header"
-        app:menu="@menu/menu_main"
-        android:fitsSystemWindows="true"/>
+        app:menu="@menu/menu_main" />
 </androidx.drawerlayout.widget.DrawerLayout>
