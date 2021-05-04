@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "778596101607",
-    "project_id": "cari-kerja-android",
-    "storage_bucket": "cari-kerja-android.appspot.com"
+    "project_number": "186052557276",
+    "firebase_url": "https://cari-kerja-5aa69-default-rtdb.firebaseio.com",
+    "project_id": "cari-kerja-5aa69",
+    "storage_bucket": "cari-kerja-5aa69.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:778596101607:android:a0ae1de7158624a6166142",
+        "mobilesdk_app_id": "1:186052557276:android:225547835970df2d8d7719",
         "android_client_info": {
           "package_name": "com.map.mobile_job_finder"
         }
       },
       "oauth_client": [
         {
-          "client_id": "778596101607-to8ban2lv6ouq62526h0kef6eltcvd7t.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.map.mobile_job_finder",
-            "certificate_hash": "f9f2c3bf8c59589792df3e01bfdd0fd692f24763"
-          }
-        },
-        {
-          "client_id": "778596101607-q7fqs3kr4ull2tjhbi853hpac2o7nr9j.apps.googleusercontent.com",
+          "client_id": "186052557276-6484hsc3oj5igtfnp3frfba2fn6hitv7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBjartMSSgHWMIaGY0POEibvPPM5SzD_yo"
+          "current_key": "AIzaSyCdBRSFBS9_A-ziOuGY8ouR55i-9eHAA3c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "778596101607-q7fqs3kr4ull2tjhbi853hpac2o7nr9j.apps.googleusercontent.com",
+              "client_id": "186052557276-6484hsc3oj5igtfnp3frfba2fn6hitv7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
