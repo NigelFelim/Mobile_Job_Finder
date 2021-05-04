@@ -183,28 +183,28 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-<LinearLayout
-    android:layout_width="20dp"
-    android:layout_height="20dp"
-    android:layout_marginTop="230dp"
-    android:gravity="center">
-    <Button
-        android:id="@+id/btnPost_Job"
-        android:layout_width="316dp"
-        android:layout_height="54dp"
 
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:paddingLeft="36pt"
-        android:paddingRight="36pt"
-        android:paddingTop="5pt"
-        android:paddingBottom="5pt"
-        android:background="@drawable/btn_activity_main"
-        android:text="Post Job"
-        android:textAppearance="?android:textAppearanceLarge" />
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="230dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnPost_Job"
+            android:layout_width="316dp"
+            android:layout_height="54dp"
 
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:paddingLeft="36pt"
+            android:paddingRight="36pt"
+            android:paddingTop="5pt"
+            android:paddingBottom="5pt"
+            android:background="@drawable/btn_activity_main"
+            android:text="Post Job"
+            android:textAppearance="?android:textAppearanceLarge" />
+    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/insert_nav_view"
