@@ -150,11 +150,11 @@ public class All_JobActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(getApplicationContext(), JobDetailsActivity.class);
 
-                        intent.putExtra("title",model.getTitle());
+                        intent.putExtra("title", model.getTitle());
                         intent.putExtra("date", model.getDate());
-                        intent.putExtra("description",model.getDescription());
-                        intent.putExtra("skills",model.getSkills());
-                        intent.putExtra("salary",model.getSalary());
+                        intent.putExtra("description", model.getDescription());
+                        intent.putExtra("skills", model.getSkills());
+                        intent.putExtra("salary", model.getSalary());
 
                         startActivity(intent);
 
