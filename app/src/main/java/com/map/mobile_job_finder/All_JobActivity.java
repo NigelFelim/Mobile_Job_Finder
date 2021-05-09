@@ -40,21 +40,19 @@ public class All_JobActivity extends AppCompatActivity {
 
     private DatabaseReference mAllJobPost;
 
-    @SuppressLint("WrongViewCast")
+//    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_job);
         //untuk menu start toolbar
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        toolbar =  findViewById(R.id.toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout_all);
+        navigationView = findViewById(R.id.nav_view_all);
+        toolbar =  findViewById(R.id.all_job_toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("All Job Post");
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -88,7 +86,7 @@ public class All_JobActivity extends AppCompatActivity {
             }
         });
         // end toolbar
-        mAllJobPost = FirebaseDatabase.getInstance().getReference().child("Public database");
+        mAllJobPost = FirebaseDatabase.getInstance().getReference().child("Public Database");
         mAllJobPost.keepSynced(true);
 
         recyclerView = findViewById(R.id.recycle_all_job_post);

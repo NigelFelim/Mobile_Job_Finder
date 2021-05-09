@@ -21,10 +21,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile_JobFinder">
-        <activity android:name=".JobDetailsActivity" android:parentActivityName=".All_JobActivity"></activity>
+        <activity
+            android:name=".JobDetailsActivity"
+            android:parentActivityName=".All_JobActivity" />
         <activity android:name=".PostJobActivity" />
-        <activity android:name=".InsertJobPostActivity" android:parentActivityName=".PostJobActivity"/>
-        <activity android:name=".All_JobActivity" android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".InsertJobPostActivity"
+            android:parentActivityName=".PostJobActivity" />
+        <activity
+            android:name=".All_JobActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

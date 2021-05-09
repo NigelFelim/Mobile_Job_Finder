@@ -20,14 +20,14 @@
             android:id="@+id/insert_job_toolbar"
             layout="@layout/toolbar" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Post Job"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="36dp"
-            android:textColor="@color/white"
-            android:paddingLeft="10dp"/>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Post Job"-->
+<!--            android:fontFamily="@font/roboto_bold"-->
+<!--            android:textSize="36dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:paddingLeft="10dp"/>-->
 
         <ScrollView
             android:layout_width="380dp"
@@ -188,7 +188,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="230dp"
-        android:gravity="center">
+        android:gravity="bottom">
         <Button
             android:id="@+id/btnPost_Job"
             android:layout_width="316dp"
