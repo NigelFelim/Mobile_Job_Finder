@@ -75,10 +75,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-
-        if(mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        }
+//
+//        if(mAuth.getCurrentUser() != null) {
+//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//        }
 
         mDialog=new ProgressDialog(this);
         LoginFunction();
