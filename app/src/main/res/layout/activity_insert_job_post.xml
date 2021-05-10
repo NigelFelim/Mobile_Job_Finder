@@ -20,6 +20,7 @@
             android:id="@+id/insert_job_toolbar"
             layout="@layout/toolbar" />
 
+<<<<<<< Updated upstream
 <!--        <TextView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
@@ -28,6 +29,8 @@
 <!--            android:textSize="36dp"-->
 <!--            android:textColor="@color/white"-->
 <!--            android:paddingLeft="10dp"/>-->
+=======
+>>>>>>> Stashed changes
 
         <ScrollView
             android:layout_width="380dp"
@@ -56,6 +59,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:fontFamily="@font/roboto_bold"
+                            android:textSize="20dp"
                             android:padding="7dp"
                             android:text="Job Title : "
                             android:textColor="@color/black"
@@ -197,10 +201,12 @@
             android:fontFamily="@font/roboto_bold"
             android:textColor="@color/white"
             android:textSize="25dp"
-            android:paddingLeft="36pt"
-            android:paddingRight="36pt"
+            android:textAlignment="center"
+
+
             android:paddingTop="5pt"
             android:paddingBottom="5pt"
+            android:layout_gravity="center"
             android:background="@drawable/btn_activity_main"
             android:text="Post Job"
             android:textAppearance="?android:textAppearanceLarge" />
