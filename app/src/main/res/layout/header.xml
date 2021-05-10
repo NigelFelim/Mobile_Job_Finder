@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@color/teal_200"
+
     android:gravity="bottom"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/job_detail"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:id="@+id/drawer_details"
+    tools:context=".JobDetailsActivity">
+    <include layout="@layout/toolbar" android:id="@+id/toolbar_details"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,7 +21,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="id"
-        android:textSize="14sp"/>
+        android:text="nama"
+        android:textSize="14sp"
+        android:id="@+id/etRegNama"/>
+
 
 </LinearLayout>

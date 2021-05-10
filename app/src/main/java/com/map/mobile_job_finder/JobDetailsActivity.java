@@ -1,17 +1,17 @@
 package com.map.mobile_job_finder;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -22,7 +22,7 @@ public class JobDetailsActivity extends AppCompatActivity {
     Toolbar toolbar;
     //end toolbar
 
-    TextView mTitle, mDate, mDesc, mSkills, mSalary;
+    TextView mNama,mTitle, mDate, mDesc, mSkills, mSalary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +75,7 @@ public class JobDetailsActivity extends AppCompatActivity {
         mDesc = findViewById(R.id.tv_desc_details);
         mSkills = findViewById(R.id.tv_skills_details);
         mSalary = findViewById(R.id.tv_salary_details);
+        mNama = findViewById(R.id.etRegNama);
 
         //menerima data
         Intent intent = getIntent();
@@ -83,12 +84,14 @@ public class JobDetailsActivity extends AppCompatActivity {
         String description = intent.getStringExtra("description");
         String skills = intent.getStringExtra("skills");
         String salary = intent.getStringExtra("salary");
+        String nama = intent.getStringExtra("nama");
 
         mTitle.setText(title);
         mDate.setText(date);
         mDesc.setText(description);
         mSkills.setText(skills);
         mSalary.setText(salary);
+        mNama.setText(nama);
 
     }
 
