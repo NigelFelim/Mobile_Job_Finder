@@ -20,17 +20,7 @@
             android:id="@+id/insert_job_toolbar"
             layout="@layout/toolbar" />
 
-<<<<<<< Updated upstream
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Post Job"-->
-<!--            android:fontFamily="@font/roboto_bold"-->
-<!--            android:textSize="36dp"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:paddingLeft="10dp"/>-->
-=======
->>>>>>> Stashed changes
+
 
         <ScrollView
             android:layout_width="380dp"
@@ -186,31 +176,29 @@
 
             </LinearLayout>
         </ScrollView>
+
+            <Button
+                android:id="@+id/btnPost_Job"
+                android:layout_width="316dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="100dp"
+
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textAlignment="center"
+
+
+                android:paddingTop="5pt"
+                android:paddingBottom="5pt"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_activity_main"
+                android:text="Post Job"
+                android:textAppearance="?android:textAppearanceLarge" />
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="230dp"
-        android:gravity="bottom">
-        <Button
-            android:id="@+id/btnPost_Job"
-            android:layout_width="316dp"
-            android:layout_height="54dp"
 
-            android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textAlignment="center"
-
-
-            android:paddingTop="5pt"
-            android:paddingBottom="5pt"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_activity_main"
-            android:text="Post Job"
-            android:textAppearance="?android:textAppearanceLarge" />
-    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/insert_nav_view"
