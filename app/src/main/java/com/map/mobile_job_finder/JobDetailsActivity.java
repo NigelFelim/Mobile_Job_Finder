@@ -47,19 +47,21 @@ public class JobDetailsActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
                         Toast.makeText(getApplicationContext(), "Balik ke home", Toast.LENGTH_LONG).show();
-                        Intent InsertJob_ke_Home = new Intent(JobDetailsActivity.this, MainActivity.class);
-                        startActivityForResult(InsertJob_ke_Home, 7);
+                        Intent JobDetail_ke_Home = new Intent(JobDetailsActivity.this, MainActivity.class);
+                        startActivityForResult(JobDetail_ke_Home, 15);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile:
                         Toast.makeText(getApplicationContext(), "Buat profile", Toast.LENGTH_LONG).show();
+                        Intent JobDetail_ke_Profile = new Intent(JobDetailsActivity.this, ProfileActivity.class);
+                        startActivityForResult(JobDetail_ke_Profile, 16);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
-                        Intent InsertJob_ke_Logout = new Intent(JobDetailsActivity.this, LoginActivity.class);
-                        startActivityForResult(InsertJob_ke_Logout, 9);
+                        Intent JobDetail_ke_Logout = new Intent(JobDetailsActivity.this, LoginActivity.class);
+                        startActivityForResult(JobDetail_ke_Logout, 17);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

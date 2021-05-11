@@ -45,19 +45,21 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
                         Toast.makeText(getApplicationContext(), "Balik ke home", Toast.LENGTH_LONG).show();
-                        Intent InsertJob_ke_Home = new Intent(MainActivity.this, MainActivity.class);
-                        startActivityForResult(InsertJob_ke_Home, 7);
+                        Intent Home_ke_Home = new Intent(MainActivity.this, MainActivity.class);
+                        startActivityForResult(Home_ke_Home, 3);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile:
                         Toast.makeText(getApplicationContext(), "Buat profile", Toast.LENGTH_LONG).show();
+                        Intent Home_ke_Profile = new Intent(MainActivity.this, ProfileActivity.class);
+                        startActivityForResult(Home_ke_Profile, 4);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
-                        Intent InsertJob_ke_Logout = new Intent(MainActivity.this, LoginActivity.class);
-                        startActivityForResult(InsertJob_ke_Logout, 9);
+                        Intent Home_ke_Logout = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivityForResult(Home_ke_Logout, 5);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // end toolbar
-
 
         mAuth = FirebaseAuth.getInstance();
 

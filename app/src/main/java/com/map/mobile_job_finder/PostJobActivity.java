@@ -52,7 +52,7 @@ public class PostJobActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.post_job_toolbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("PostJob");
+        getSupportActionBar().setTitle("Post Job");
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -64,19 +64,21 @@ public class PostJobActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
                         Toast.makeText(getApplicationContext(), "Balik ke home", Toast.LENGTH_LONG).show();
-                        Intent InsertJob_ke_Home = new Intent(PostJobActivity.this, MainActivity.class);
-                        startActivityForResult(InsertJob_ke_Home, 7);
+                        Intent PostJob_ke_Home = new Intent(PostJobActivity.this, MainActivity.class);
+                        startActivityForResult(PostJob_ke_Home, 9);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile:
                         Toast.makeText(getApplicationContext(), "Buat profile", Toast.LENGTH_LONG).show();
+                        Intent PostJob_ke_Profile = new Intent(PostJobActivity.this, ProfileActivity.class);
+                        startActivityForResult(PostJob_ke_Profile, 10);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
-                        Intent InsertJob_ke_Logout = new Intent(PostJobActivity.this, LoginActivity.class);
-                        startActivityForResult(InsertJob_ke_Logout, 9);
+                        Intent PostJob_ke_Logout = new Intent(PostJobActivity.this, LoginActivity.class);
+                        startActivityForResult(PostJob_ke_Logout, 11);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

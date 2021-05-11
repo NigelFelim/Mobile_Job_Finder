@@ -58,7 +58,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.insert_job_toolbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("PostJob");
+        getSupportActionBar().setTitle("Post Job");
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -71,18 +71,20 @@ public class InsertJobPostActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         Toast.makeText(getApplicationContext(), "Balik ke home", Toast.LENGTH_LONG).show();
                         Intent InsertJob_ke_Home = new Intent(InsertJobPostActivity.this, MainActivity.class);
-                        startActivityForResult(InsertJob_ke_Home, 7);
+                        startActivityForResult(InsertJob_ke_Home, 12);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile:
                         Toast.makeText(getApplicationContext(), "Buat profile", Toast.LENGTH_LONG).show();
+                        Intent InsertJob_ke_Profile = new Intent(InsertJobPostActivity.this, ProfileActivity.class);
+                        startActivityForResult(InsertJob_ke_Profile, 13);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
                         Intent InsertJob_ke_Logout = new Intent(InsertJobPostActivity.this, LoginActivity.class);
-                        startActivityForResult(InsertJob_ke_Logout, 9);
+                        startActivityForResult(InsertJob_ke_Logout, 14);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
