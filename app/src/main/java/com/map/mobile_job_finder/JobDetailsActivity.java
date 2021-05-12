@@ -77,7 +77,7 @@ public class JobDetailsActivity extends AppCompatActivity {
         mDesc = findViewById(R.id.tv_desc_details);
         mSkills = findViewById(R.id.tv_skills_details);
         mSalary = findViewById(R.id.tv_salary_details);
-        mNama = findViewById(R.id.etRegNama);
+//        mNama = findViewById(R.id.etRegNama);
 
         //menerima data
         Intent intent = getIntent();
@@ -86,14 +86,14 @@ public class JobDetailsActivity extends AppCompatActivity {
         String description = intent.getStringExtra("description");
         String skills = intent.getStringExtra("skills");
         String salary = intent.getStringExtra("salary");
-        String nama = intent.getStringExtra("nama");
+//        String nama = intent.getStringExtra("nama");
 
         mTitle.setText(title);
         mDate.setText(date);
         mDesc.setText(description);
         mSkills.setText(skills);
         mSalary.setText(salary);
-        mNama.setText(nama);
+//        mNama.setText(nama);
 
     }
 
