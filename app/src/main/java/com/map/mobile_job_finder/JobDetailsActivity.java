@@ -3,6 +3,8 @@ package com.map.mobile_job_finder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ public class JobDetailsActivity extends AppCompatActivity {
     //end toolbar
 
     TextView mNama,mTitle, mDate, mDesc, mSkills, mSalary;
+
+    Button btnlocate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +98,15 @@ public class JobDetailsActivity extends AppCompatActivity {
         mSkills.setText(skills);
         mSalary.setText(salary);
 //        mNama.setText(nama);
+
+        //location button
+        btnlocate = findViewById(R.id.btn_locationss);
+        btnlocate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(JobDetailsActivity.this,MapsActivity.class));
+            }
+        });
 
     }
 
