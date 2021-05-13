@@ -23,24 +23,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
         <TextView
-
+            android:id="@+id/namaProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@android:color/black"
-            android:id="@+id/namaProfile"
+            android:text="Nama"
             android:layout_gravity="center"/>
-
         <TextView
-
+            android:id="@+id/emailProfile"
             android:layout_width="wrap_content"
-            android:layout_height="39dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:text="Email"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@android:color/black"
-            android:id="@+id/emailProfile"/>
+            android:layout_gravity="center"/>
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/profile_nav_view"

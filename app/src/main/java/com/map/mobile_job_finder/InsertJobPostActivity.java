@@ -42,7 +42,6 @@ public class InsertJobPostActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mJobPost;
     private DatabaseReference mPublicDatabase;
-
     //end firebase
 
     //end variable post job
@@ -60,7 +59,6 @@ public class InsertJobPostActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Post Job");
-
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

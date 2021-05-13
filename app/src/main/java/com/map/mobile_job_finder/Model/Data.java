@@ -8,10 +8,10 @@ public class Data {
 
     String id;
     String date;
-    String name;
-    String email;
 
+    public Data(){
 
+    }
 
     public Data(String title, String description, String skills, String salary, String id, String date) {
         this.title = title;
@@ -20,8 +20,6 @@ public class Data {
         this.salary = salary;
         this.id = id;
         this.date = date;
-        this.name=name;
-        this.email=email;
     }
 
 
@@ -72,12 +70,4 @@ public class Data {
     public void setDate(String date) {
         this.date = date;
     }
-
-    public String getName() {return name;}
-
-    public void setName(String name){this.name=name;}
-
-    public String getEmail() { return email;}
-
-    public void setEmail( String email){this.email=email;}
 }
