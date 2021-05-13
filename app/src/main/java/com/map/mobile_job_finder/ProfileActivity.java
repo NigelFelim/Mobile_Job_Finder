@@ -1,12 +1,5 @@
 package com.map.mobile_job_finder;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,9 +7,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
     //toolbar
@@ -25,13 +23,15 @@ public class ProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
     //end toolbar
 
-    private TextView namaProfile, emailProfile;
+    private TextView  namaProfile,emailProfile;
     private ImageView fotoProfile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
 
         //toolbar
         //untuk menu start
@@ -80,5 +80,15 @@ public class ProfileActivity extends AppCompatActivity {
         namaProfile = findViewById(R.id.namaProfile);
         emailProfile = findViewById(R.id.emailProfile);
         fotoProfile = findViewById(R.id.fotoProfile);
+
+        //menerima data
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        String email = intent.getStringExtra("email");
+        //Uri foto = intent.getData();
+
+        namaProfile.setText(name);
+        emailProfile.setText(email);
+        //fotoProfile.setImageURI(Uri.parse(foto));
     }
 }

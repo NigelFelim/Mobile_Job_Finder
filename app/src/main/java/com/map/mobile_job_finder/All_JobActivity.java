@@ -1,6 +1,5 @@
 package com.map.mobile_job_finder;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,9 +18,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -143,6 +141,8 @@ public class All_JobActivity extends AppCompatActivity {
                 viewHolder.setJobDescription(model.getDescription());
                 viewHolder.setJobSkills(model.getSkills());
                 viewHolder.setJobSalary(model.getSalary());
+                viewHolder.setJobName(model.getName());
+                viewHolder.setJobEmail(model.getEmail());
 
                 viewHolder.myview.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -155,6 +155,8 @@ public class All_JobActivity extends AppCompatActivity {
                         intent.putExtra("description", model.getDescription());
                         intent.putExtra("skills", model.getSkills());
                         intent.putExtra("salary", model.getSalary());
+                        intent.putExtra("name",model.getName());
+                        intent.putExtra("email",model.getEmail());
 
                         startActivity(intent);
 
@@ -204,6 +206,17 @@ public class All_JobActivity extends AppCompatActivity {
         public void setJobSalary(String salary){
             TextView mSalary = myview.findViewById(R.id.all_job_post_sallary);
             mSalary.setText(salary);
+        }
+
+        public void setJobName(String name){
+            TextView userName = myview.findViewById(R.id.namaProfile);
+            userName.setText(name);
+
+        }
+        public void setJobEmail(String email){
+            TextView emailProfile =myview.findViewById(R.id.emailProfile);
+            emailProfile.setText(email);
+
         }
 
 
