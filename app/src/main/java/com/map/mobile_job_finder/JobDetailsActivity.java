@@ -1,10 +1,14 @@
 package com.map.mobile_job_finder;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +19,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.map.mobile_job_finder.Model.putFile;
 
 public class JobDetailsActivity extends AppCompatActivity {
     //toolbar
@@ -27,6 +40,14 @@ public class JobDetailsActivity extends AppCompatActivity {
     TextView mNama,mTitle, mDate, mDesc, mSkills, mSalary;
 
     Button btnlocate;
+
+    //upload
+    Button btnUpload;
+    EditText edtUpload;
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +128,69 @@ public class JobDetailsActivity extends AppCompatActivity {
                 startActivity(new Intent(JobDetailsActivity.this,MapsActivity.class));
             }
         });
+        //upload
+        btnUpload = findViewById(R.id.btn_uploadfile);
+        edtUpload=findViewById(R.id.edt_upload);
 
+        storageReference = FirebaseStorage.getInstance().getReference();
+        databaseReference= FirebaseDatabase.getInstance().getReference("uploadFile");
+        btnUpload.setEnabled(false);
+        edtUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectFile();
+            }
+        });
+    }
+
+    private void selectFile() {
+        Intent intent=new Intent();
+        intent.setType("application/file");
+        intent.setAction(intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"File Select"),12);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,@NonNull final Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 12 && resultCode == RESULT_OK && data!=null && data.getData()!=null){
+            btnUpload.setEnabled(true);
+            edtUpload.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
+            btnUpload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    uploadFileToFirebase(data.getData());
+                }
+            });
+        }
+    }
+
+    private void uploadFileToFirebase(Uri data) {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("File is loading...");
+        progressDialog.show();
+
+        StorageReference reference= storageReference.child("upload"+System.currentTimeMillis()+".pdf");
+
+        reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> uriTask=  taskSnapshot.getStorage().getDownloadUrl();
+                while(!uriTask.isComplete());
+                Uri uri  = uriTask.getResult();
+                putFile putFile=new putFile(edtUpload.getText().toString(), uri.toString());
+                databaseReference.child(databaseReference.push().getKey()).setValue(putFile);
+                Toast.makeText(JobDetailsActivity.this,"File Upload",Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progress=(100.0*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                progressDialog.setMessage("File uploaded.."+(int) progress+"%");
+            }
+        });
     }
 
     @Override
