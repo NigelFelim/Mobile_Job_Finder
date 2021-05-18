@@ -5,6 +5,7 @@ public class Data {
     String description;
     String skills;
     String salary;
+    String location;
 
     String id;
     String date;
@@ -13,13 +14,14 @@ public class Data {
 
     }
 
-    public Data(String title, String description, String skills, String salary, String id, String date) {
+    public Data(String title, String description, String skills, String salary, String id, String date,String location) {
         this.title = title;
         this.description = description;
         this.skills = skills;
         this.salary = salary;
         this.id = id;
         this.date = date;
+        this.location = location;
     }
 
 
@@ -69,5 +71,13 @@ public class Data {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

@@ -34,7 +34,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
     //end variabel toolbar
 
     //variabel post job
-    EditText edtJobTitle, edtJobDesc, edtSkill, edtSalary;
+    EditText edtJobTitle, edtJobDesc, edtSkill, edtSalary, edtLocation;
     private Button btnPost;
     //end post job
     //firebase
@@ -111,6 +111,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
         edtJobDesc=findViewById(R.id.edtJobDesc);
         edtSkill=findViewById(R.id.edtSkill);
         edtSalary=findViewById(R.id.edtSalary);
+        edtLocation = findViewById(R.id.edt_location);
 
         btnPost=findViewById(R.id.btnPost_Job);
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +121,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
                 String description = edtJobDesc.getText().toString().trim();
                 String skills = edtSkill.getText().toString().trim();
                 String salary = edtSalary.getText().toString().trim();
+                String location = edtLocation.getText().toString().trim();
 
                 if (TextUtils.isEmpty(title)) {
                     edtJobTitle.setError("This Field is Required");
@@ -138,10 +140,14 @@ public class InsertJobPostActivity extends AppCompatActivity {
                     edtSalary.setError("This Field is Required");
                     return;
                 }
+                if (TextUtils.isEmpty(salary)) {
+                    edtLocation.setError("This Field is Required");
+                    return;
+                }
 
                 String id = mJobPost.push().getKey();
                 String date = DateFormat.getDateInstance().format(new Date());
-                Data data = new Data(title, description, skills, salary, id, date);
+                Data data = new Data(title, description, skills, salary, id, date, location);
                 mJobPost.child(id).setValue(data);
                 mPublicDatabase.child(id).setValue(data);
                 Toast.makeText(getApplicationContext(), " Sucessfull", Toast.LENGTH_SHORT).show();
