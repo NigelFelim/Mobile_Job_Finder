@@ -57,13 +57,13 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/pictureprofile"
+            android:id="@+id/pictureprofile1"
             android:src="@drawable/samuel_profile"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/pictureprofile"
+            android:layout_toEndOf="@id/pictureprofile1"
             android:text="Inggrid Fortuna"
             android:paddingTop="27dp"
             android:paddingBottom="27dp"
@@ -82,13 +82,13 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/pictureprofile"
+            android:id="@+id/pictureprofile2"
             android:src="@drawable/samuel_profile"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/pictureprofile"
+            android:layout_toEndOf="@id/pictureprofile2"
             android:text="Velix Halim"
             android:paddingTop="27dp"
             android:paddingBottom="27dp"
@@ -107,13 +107,13 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/pictureprofile"
+            android:id="@+id/pictureprofile3"
             android:src="@drawable/samuel_profile"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/pictureprofile"
+            android:layout_toEndOf="@id/pictureprofile3"
             android:text="Nigel Felim"
             android:paddingTop="27dp"
             android:paddingBottom="27dp"
