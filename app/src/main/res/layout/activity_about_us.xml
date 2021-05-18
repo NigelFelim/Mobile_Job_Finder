@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_login"
-    tools:context=".AboutUs"
+    tools:context=".AboutUsActivity"
     android:orientation="vertical">
 
     <TextView
@@ -138,7 +138,9 @@ Solusi yang Memungkinkan :
 2. Pakai modul FICO buat membantu mengatur/mengawasi/melancarkan cash flow. pokoknya semua yang brhubungan dengan finansial"
         android:gravity="center"
         android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/white"
+        android:textColor="@color/white">
+
+    </TextView>
 
 
 </LinearLayout>

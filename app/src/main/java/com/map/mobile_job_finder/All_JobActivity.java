@@ -1,6 +1,5 @@
 package com.map.mobile_job_finder;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
@@ -73,6 +71,12 @@ public class All_JobActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Buat profile",Toast.LENGTH_LONG).show();
                         Intent AllJob_ke_Profile = new Intent(All_JobActivity.this, ProfileActivity.class);
                         startActivityForResult(AllJob_ke_Profile, 7);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.btnAboutUs :
+                        Toast.makeText(getApplicationContext(),"About The Creators",Toast.LENGTH_LONG).show();
+                        Intent AllJob_ke_About = new Intent(All_JobActivity.this, AboutUsActivity.class);
+                        startActivityForResult(AllJob_ke_About, 7);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout :
