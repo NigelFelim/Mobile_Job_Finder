@@ -111,7 +111,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
         edtJobDesc=findViewById(R.id.edtJobDesc);
         edtSkill=findViewById(R.id.edtSkill);
         edtSalary=findViewById(R.id.edtSalary);
-        edtLocation = findViewById(R.id.edt_location);
+        edtLocation = findViewById(R.id.edtJoblocationss);
 
         btnPost=findViewById(R.id.btnPost_Job);
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +140,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
                     edtSalary.setError("This Field is Required");
                     return;
                 }
-                if (TextUtils.isEmpty(salary)) {
+                if (TextUtils.isEmpty(location)) {
                     edtLocation.setError("This Field is Required");
                     return;
                 }

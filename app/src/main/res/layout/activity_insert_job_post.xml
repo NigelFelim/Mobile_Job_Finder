@@ -199,7 +199,7 @@
                         android:layout_weight="3">
 
                         <EditText
-                            android:id="@+id/edtJoblocation"
+                            android:id="@+id/edtJoblocationss"
                             android:layout_width="match_parent"
                             android:fontFamily="@font/roboto_bold"
                             android:textColor="@color/black"
