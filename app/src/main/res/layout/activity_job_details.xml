@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
             android:padding="5dp"
             android:fontFamily="@font/roboto_medium"
             android:textAppearance="?android:textAppearanceLarge"
@@ -30,7 +30,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:padding="5dp"
             android:textColor="@color/white"
             android:text="4 Mei, 2021"
@@ -41,7 +40,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:fontFamily="@font/roboto_medium"
-            android:layout_margin="5dp"
             android:padding="5dp"
             android:text="Description..."
             android:textAppearance="?android:textAppearanceMedium"
@@ -49,7 +47,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:padding="5dp"
             android:text="Skills"
             android:textColor="@color/white"
@@ -59,7 +56,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:padding="5dp"
             android:text="Salary"
             android:textColor="@color/white"
@@ -67,10 +63,10 @@
             android:textAppearance="?android:textAppearanceMedium"
             android:id="@+id/tv_salary_details"/>
         <Button
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="10dp"
             android:padding="5dp"
             android:textAlignment="center"
             android:textSize="20dp"
@@ -84,7 +80,7 @@
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="40dp"
             android:textAlignment="center"
             android:hint="select file to apply job"
             android:textSize="10dp"
@@ -93,9 +89,9 @@
             android:id="@+id/edt_upload"/>
         <Button
             android:layout_width="170dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="10dp"
             android:padding="5dp"
             android:textAlignment="center"
             android:textSize="20dp"
