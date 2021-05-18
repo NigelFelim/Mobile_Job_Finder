@@ -1,14 +1,15 @@
 package com.map.mobile_job_finder;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -143,18 +144,67 @@ public class JobDetailsActivity extends AppCompatActivity {
         });
     }
 
+    // Request code for creating a PDF document.
+    private static final int CREATE_FILE = 1;
+
+    private void createFile(Uri pickerInitialUri) {
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("application/pdf");
+        intent.putExtra(Intent.EXTRA_TITLE, "invoice.pdf");
+
+        // Optionally, specify a URI for the directory that should be opened in
+        // the system file picker when your app creates the document.
+        intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
+
+        startActivityForResult(intent, CREATE_FILE);
+    }
+
+    private static final int PICK_PDF_FILE = 2;
+
+    private void openFile(Uri pickerInitialUri) {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("application/pdf");
+
+        // Optionally, specify a URI for the file that should appear in the
+        // system file picker when it loads.
+        intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
+
+        startActivityForResult(intent, PICK_PDF_FILE);
+    }
+
+    public void openDirectory(Uri uriToLoad) {
+        // Choose a directory using the system's file picker.
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+
+        // Provide read access to files and sub-directories in the user-selected
+        // directory.
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        // Optionally, specify a URI for the directory that should be opened in
+        // the system file picker when it loads.
+        intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, uriToLoad);
+
+        startActivityForResult(intent, 12);
+    }
+
     private void selectFile() {
         Intent intent=new Intent();
-        intent.setType("application/file");
+        intent.setType("application/pdf");
         intent.setAction(intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"File Select"),12);
 
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,@NonNull final Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode == 12 && resultCode == RESULT_OK && data!=null && data.getData()!=null){
+        if(requestCode == 12 && resultCode == Activity.RESULT_OK && data!=null && data.getData()!=null){
+            Uri uri =null;
+            if(data!=null){
+                uri=data.getData();
+            }
             btnUpload.setEnabled(true);
             edtUpload.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
             btnUpload.setOnClickListener(new View.OnClickListener() {
