@@ -58,7 +58,7 @@
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/pictureprofile1"
-            android:src="@drawable/samuel_profile"/>
+            android:src="@drawable/inggrid_profile"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/pictureprofile2"
-            android:src="@drawable/samuel_profile"/>
+            android:src="@drawable/velix_profile"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -108,7 +108,7 @@
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/pictureprofile3"
-            android:src="@drawable/samuel_profile"/>
+            android:src="@drawable/nigel_profile"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -129,13 +129,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Permasalahan yang ada :
-1. Kesalahan pengeluaran
-2. Ada nomor invoice yang sama
 
-Solusi yang Memungkinkan :
-1. Pakai modul SD buat bikin inquiry, quotation, order, invoice, billing
-2. Pakai modul FICO buat membantu mengatur/mengawasi/melancarkan cash flow. pokoknya semua yang brhubungan dengan finansial"
         android:gravity="center"
         android:fontFamily="@font/roboto_bold"
         android:textColor="@color/white">
