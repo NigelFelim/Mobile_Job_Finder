@@ -142,7 +142,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" ISI NYA JANGAN LUPA "
+        android:text=" Universitas Multimedia Nusantara 2021"
         android:textSize="20dp"
 
         android:gravity="center"
