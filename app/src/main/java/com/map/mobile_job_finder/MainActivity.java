@@ -43,16 +43,22 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        Toast.makeText(getApplicationContext(), "Balik ke home", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
                         Intent Home_ke_Home = new Intent(MainActivity.this, MainActivity.class);
                         startActivityForResult(Home_ke_Home, 3);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile:
-                        Toast.makeText(getApplicationContext(), "Buat profile", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "My Profile", Toast.LENGTH_LONG).show();
                         Intent Home_ke_Profile = new Intent(MainActivity.this, ProfileActivity.class);
                         startActivityForResult(Home_ke_Profile, 4);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.btnAboutUs:
+                        Toast.makeText(getApplicationContext(), "About The Creators", Toast.LENGTH_LONG).show();
+                        Intent Home_ke_AboutUS = new Intent(MainActivity.this, AboutUsActivity.class);
+                        startActivityForResult(Home_ke_AboutUS, 24);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:

@@ -69,16 +69,22 @@ public class InsertJobPostActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        Toast.makeText(getApplicationContext(), "Balik ke home", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
                         Intent InsertJob_ke_Home = new Intent(InsertJobPostActivity.this, MainActivity.class);
                         startActivityForResult(InsertJob_ke_Home, 12);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile:
-                        Toast.makeText(getApplicationContext(), "Buat profile", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "My Profile", Toast.LENGTH_LONG).show();
                         Intent InsertJob_ke_Profile = new Intent(InsertJobPostActivity.this, ProfileActivity.class);
                         startActivityForResult(InsertJob_ke_Profile, 13);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.btnAboutUs:
+                        Toast.makeText(getApplicationContext(), "About The Creators", Toast.LENGTH_LONG).show();
+                        Intent InsertJob_ke_AboutUs = new Intent(InsertJobPostActivity.this, AboutUsActivity.class);
+                        startActivityForResult(InsertJob_ke_AboutUs, 22);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:

@@ -61,14 +61,14 @@ public class All_JobActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_home :
-                        Toast.makeText(getApplicationContext(),"Balik ke home",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Home",Toast.LENGTH_LONG).show();
                         Intent AllJob_ke_Home = new Intent(All_JobActivity.this, MainActivity.class);
                         startActivityForResult(AllJob_ke_Home, 6);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile :
-                        Toast.makeText(getApplicationContext(),"Buat profile",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"My Profile",Toast.LENGTH_LONG).show();
                         Intent AllJob_ke_Profile = new Intent(All_JobActivity.this, ProfileActivity.class);
                         startActivityForResult(AllJob_ke_Profile, 7);
                         drawerLayout.closeDrawer(GravityCompat.START);
@@ -76,7 +76,7 @@ public class All_JobActivity extends AppCompatActivity {
                     case R.id.btnAboutUs :
                         Toast.makeText(getApplicationContext(),"About The Creators",Toast.LENGTH_LONG).show();
                         Intent AllJob_ke_About = new Intent(All_JobActivity.this, AboutUsActivity.class);
-                        startActivityForResult(AllJob_ke_About, 7);
+                        startActivityForResult(AllJob_ke_About, 21);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout :

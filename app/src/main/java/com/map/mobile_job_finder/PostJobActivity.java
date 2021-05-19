@@ -63,16 +63,22 @@ public class PostJobActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        Toast.makeText(getApplicationContext(), "Balik ke home", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
                         Intent PostJob_ke_Home = new Intent(PostJobActivity.this, MainActivity.class);
                         startActivityForResult(PostJob_ke_Home, 9);
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnProfile:
-                        Toast.makeText(getApplicationContext(), "Buat profile", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "My Profile", Toast.LENGTH_LONG).show();
                         Intent PostJob_ke_Profile = new Intent(PostJobActivity.this, ProfileActivity.class);
                         startActivityForResult(PostJob_ke_Profile, 10);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.btnAboutUs:
+                        Toast.makeText(getApplicationContext(), "About the Creators", Toast.LENGTH_LONG).show();
+                        Intent PostJob_ke_AboutUS = new Intent(PostJobActivity.this, AboutUsActivity.class);
+                        startActivityForResult(PostJob_ke_AboutUS, 25);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:
