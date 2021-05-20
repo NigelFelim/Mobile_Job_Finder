@@ -64,6 +64,7 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/edtLocationPost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"

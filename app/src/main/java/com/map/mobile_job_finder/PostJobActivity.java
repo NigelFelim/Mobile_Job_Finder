@@ -147,6 +147,7 @@ public class PostJobActivity extends AppCompatActivity {
                 viewHolder.setJobDescription(model.getDescription());
                 viewHolder.setJobSkills(model.getSkills());
                 viewHolder.setJobSalary(model.getSalary());
+                viewHolder.setJobLocation(model.getLocation());
             }
 
         };
@@ -179,6 +180,10 @@ public class PostJobActivity extends AppCompatActivity {
         public void setJobSalary(String salary){
             TextView mSalary=myview.findViewById(R.id.edtSalarypost);
             mSalary.setText(salary);
+        }
+        public void setJobLocation(String location){
+            TextView mLocation=myview.findViewById(R.id.edtLocationPost);
+            mLocation.setText(location);
         }
     }
 }

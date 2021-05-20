@@ -118,6 +118,7 @@ public class JobDetailsActivity extends AppCompatActivity {
         String description = intent.getStringExtra("description");
         String skills = intent.getStringExtra("skills");
         String salary = intent.getStringExtra("salary");
+        String location = intent.getStringExtra("location");
 //        String nama = intent.getStringExtra("nama");
 
         mTitle.setText(title);
@@ -133,6 +134,7 @@ public class JobDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(JobDetailsActivity.this,MapsActivity.class));
+                intent.putExtra("location",location);
             }
         });
         //upload

@@ -159,6 +159,7 @@ public class All_JobActivity extends AppCompatActivity {
                         intent.putExtra("description", model.getDescription());
                         intent.putExtra("skills", model.getSkills());
                         intent.putExtra("salary", model.getSalary());
+                        intent.putExtra("location",model.getLocation());
 
                         startActivity(intent);
 

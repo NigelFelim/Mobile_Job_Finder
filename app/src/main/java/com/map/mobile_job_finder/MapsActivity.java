@@ -3,6 +3,7 @@ package com.map.mobile_job_finder;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
@@ -42,6 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String[] places;
     private LocationManager locationManager;
     private Location loc;
+    EditText edtLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         currentLocation();
 
-
-
+//        Intent intent = getIntent();
+//        String location = intent.getStringExtra("location");
+//        edtLocation = findViewById(R.id.edt_location);
+//        Log.i("location",location);
+//        edtLocation.setText(location);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
@@ -194,7 +199,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.btn_search:
                 EditText addressField = (EditText) findViewById(R.id.edt_location);
                 String address = addressField.getText().toString();
-
+                Log.i("address",address);
                 List<Address> addressList = null;
                 MarkerOptions userMarkeroptions = new MarkerOptions();
                 if(!TextUtils.isEmpty(address)){
