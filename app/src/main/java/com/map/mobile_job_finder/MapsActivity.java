@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -43,7 +44,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String[] places;
     private LocationManager locationManager;
     private Location loc;
-    EditText edtLocation;
+//    EditText edtLocation;
+    private TextView tvSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,9 +199,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onSearch(View v){
         switch (v.getId()){
             case R.id.btn_search:
-                EditText addressField = (EditText) findViewById(R.id.edt_location);
-                String address = addressField.getText().toString();
-                Log.i("address",address);
+//                EditText addressField = (EditText) findViewById(R.id.edt_location);
+//                String address = addressField.getText().toString();
+//                Log.i("address",address);
+                Intent mapsIntent = getIntent();
+                String address =  mapsIntent.getStringExtra("locationMaps");
+                tvSearch = findViewById(R.id.tv_location_maps);
+                tvSearch.setText(address);
                 List<Address> addressList = null;
                 MarkerOptions userMarkeroptions = new MarkerOptions();
                 if(!TextUtils.isEmpty(address)){

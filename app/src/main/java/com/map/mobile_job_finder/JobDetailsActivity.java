@@ -133,8 +133,12 @@ public class JobDetailsActivity extends AppCompatActivity {
         btnlocate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(JobDetailsActivity.this,MapsActivity.class));
-                intent.putExtra("location",location);
+//                startActivity(new Intent(JobDetailsActivity.this,MapsActivity.class));
+                Intent mapsIntent = new Intent(getApplicationContext(),MapsActivity.class);
+
+                mapsIntent.putExtra("locationMaps",location);
+                startActivity(mapsIntent);
+//                intent.putExtra("location",location);
             }
         });
         //upload
