@@ -15,7 +15,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/toolbar" android:id="@+id/all_job_toolbar"/>
-
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputSearch"
+            android:hint="Cari Kerja"
+            android:layout_margin="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@drawable/ic_search"/>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -2,10 +2,13 @@ package com.map.mobile_job_finder;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.map.mobile_job_finder.Model.Data;
 
 public class All_JobActivity extends AppCompatActivity {
@@ -38,6 +42,7 @@ public class All_JobActivity extends AppCompatActivity {
 
     private DatabaseReference mAllJobPost;
 
+    private EditText edtInput;
 //    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +116,31 @@ public class All_JobActivity extends AppCompatActivity {
 //                startActivity(new Intent(All_JobActivity.this, InsertJobPostActivity.class));
 //            }
 //        });
+
+        LoadData("");
+        //search
+        edtInput = findViewById(R.id.inputSearch);
+        edtInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString()!=null){
+                    LoadData(s.toString());
+                }
+                else {
+                    LoadData("");
+                }
+            }
+        });
     }
 
     @Override
@@ -126,10 +156,12 @@ public class All_JobActivity extends AppCompatActivity {
 //    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //        return true;
 //    }
-    @Override
-    protected void onStart(){
-        super.onStart();
-        FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(mAllJobPost, Data.class).build();
+//    @Override
+    protected void LoadData(String cari){
+//        super.onStart();
+        Query query = mAllJobPost.orderByChild("title").startAt(cari).endAt(cari+"\uf8ff");
+//        FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(mAllJobPost, Data.class).build();
+        FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(query, Data.class).build();
         FirebaseRecyclerAdapter<Data, AllJobPostViewHolder> adapter = new FirebaseRecyclerAdapter<Data, AllJobPostViewHolder>(firebaseRecyclerOptions) {
 
             @NonNull
