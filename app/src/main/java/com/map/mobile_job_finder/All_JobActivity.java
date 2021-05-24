@@ -43,7 +43,7 @@ public class All_JobActivity extends AppCompatActivity {
     private DatabaseReference mAllJobPost;
 
     private EditText edtInput;
-//    @SuppressLint("WrongViewCast")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,14 +108,7 @@ public class All_JobActivity extends AppCompatActivity {
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        //fab start
-//        fabBtn = findViewById(R.id.fab_add);
-//        fabBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(All_JobActivity.this, InsertJobPostActivity.class));
-//            }
-//        });
+
 
         LoadData("");
         //search
@@ -152,15 +145,11 @@ public class All_JobActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        return true;
-//    }
-//    @Override
+
     protected void LoadData(String cari){
-//        super.onStart();
+
         Query query = mAllJobPost.orderByChild("title").startAt(cari).endAt(cari+"\uf8ff");
-//        FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(mAllJobPost, Data.class).build();
+
         FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(query, Data.class).build();
         FirebaseRecyclerAdapter<Data, AllJobPostViewHolder> adapter = new FirebaseRecyclerAdapter<Data, AllJobPostViewHolder>(firebaseRecyclerOptions) {
 

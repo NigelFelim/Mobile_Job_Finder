@@ -38,7 +38,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
     private Button btnPost;
     //end post job
     //firebase
-    //private DatabaseReference mDatabase;
+
     private FirebaseAuth mAuth;
     private DatabaseReference mJobPost;
     private DatabaseReference mPublicDatabase;
@@ -101,7 +101,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
         });
         //end toolbar
         //firebase
-        //mDatabase = FirebaseDatabase.getInstance().getReference();
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
         String uId = mUser.getUid();

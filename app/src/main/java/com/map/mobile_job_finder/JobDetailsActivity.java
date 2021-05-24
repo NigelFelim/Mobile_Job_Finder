@@ -38,7 +38,7 @@ public class JobDetailsActivity extends AppCompatActivity {
     Toolbar toolbar;
     //end toolbar
 
-    TextView mNama,mTitle, mDate, mDesc, mSkills, mSalary;
+    TextView mTitle, mDate, mDesc, mSkills, mSalary;
 
     Button btnlocate;
 
@@ -109,7 +109,7 @@ public class JobDetailsActivity extends AppCompatActivity {
         mDesc = findViewById(R.id.tv_desc_details);
         mSkills = findViewById(R.id.tv_skills_details);
         mSalary = findViewById(R.id.tv_salary_details);
-//        mNama = findViewById(R.id.etRegNama);
+
 
         //menerima data
         Intent intent = getIntent();
@@ -119,26 +119,26 @@ public class JobDetailsActivity extends AppCompatActivity {
         String skills = intent.getStringExtra("skills");
         String salary = intent.getStringExtra("salary");
         String location = intent.getStringExtra("location");
-//        String nama = intent.getStringExtra("nama");
+
 
         mTitle.setText(title);
         mDate.setText(date);
         mDesc.setText(description);
         mSkills.setText(skills);
         mSalary.setText(salary);
-//        mNama.setText(nama);
+
 
         //location button
         btnlocate = findViewById(R.id.btn_locationss);
         btnlocate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(JobDetailsActivity.this,MapsActivity.class));
+
                 Intent mapsIntent = new Intent(getApplicationContext(),MapsActivity.class);
 
                 mapsIntent.putExtra("locationMaps",location);
                 startActivity(mapsIntent);
-//                intent.putExtra("location",location);
+
             }
         });
         //upload

@@ -81,9 +81,9 @@ public class ProfileActivity extends AppCompatActivity {
         });
         //end toolbar
 
-        namaProfile = findViewById(R.id.namaProfile);
-        emailProfile = findViewById(R.id.emailProfile);
-        fotoProfile = findViewById(R.id.fotoProfile);
+        namaProfile = findViewById(R.id.namap);
+        emailProfile = findViewById(R.id.emailp);
+        fotoProfile = findViewById(R.id.foto);
 
         //menerima data
         Intent intent = getIntent();

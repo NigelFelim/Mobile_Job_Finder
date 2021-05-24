@@ -97,15 +97,5 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-//                    if (etRegPassword.getText().toString().equalsIgnoreCase(etRetypePassword.getText().toString())) {
-//                        Intent berhasilRegister = new Intent(RegisterActivity.this, LoginActivity.class);
-//                        startActivityForResult(berhasilRegister, 3);
-//                        finish();
-//                    } else {
-//                        tvIncorrectRetype.setVisibility(View.VISIBLE);
-//                    }
-//                }
-//            });
-//        }
-//    }
+
 

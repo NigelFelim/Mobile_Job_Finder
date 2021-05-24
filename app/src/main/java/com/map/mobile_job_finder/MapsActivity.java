@@ -44,7 +44,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String[] places;
     private LocationManager locationManager;
     private Location loc;
-//    EditText edtLocation;
     private TextView tvSearch;
 
     @Override
@@ -56,12 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         currentLocation();
 
-//        Intent intent = getIntent();
-//        String location = intent.getStringExtra("location");
-//        edtLocation = findViewById(R.id.edt_location);
-//        Log.i("location",location);
-//        edtLocation.setText(location);
-
+//
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
 
@@ -199,9 +193,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onSearch(View v){
         switch (v.getId()){
             case R.id.btn_search:
-//                EditText addressField = (EditText) findViewById(R.id.edt_location);
-//                String address = addressField.getText().toString();
-//                Log.i("address",address);
+
                 Intent mapsIntent = getIntent();
                 String address =  mapsIntent.getStringExtra("locationMaps");
                 tvSearch = findViewById(R.id.tv_location_maps);
@@ -249,9 +241,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        // Add a marker in Indonesia and move the camera
         LatLng umn = new LatLng(-6.255986, 106.618493);
-        mMap.addMarker(new MarkerOptions().position(umn).title("UMN Lobby"));
+//        mMap.addMarker(new MarkerOptions().position(umn).title("UMN Lobby"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(umn));
     }
 }

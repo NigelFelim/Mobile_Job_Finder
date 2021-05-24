@@ -14,23 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <include
-            android:id="@+id/profile_toolbar"
-            layout="@layout/toolbar" />
+        <include layout="@layout/toolbar" android:id="@+id/profile_toolbar"
+             />
         <ImageView
-            android:id="@+id/fotoProfile"
+            android:id="@+id/foto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
         <TextView
-            android:id="@+id/namaProfile"
-            android:layout_width="wrap_content"
+            android:id="@+id/namap"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nama"
             android:layout_gravity="center"/>
         <TextView
-            android:id="@+id/emailProfile"
-            android:layout_width="wrap_content"
+            android:id="@+id/emailp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"
             android:layout_gravity="center"/>
