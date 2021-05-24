@@ -14,6 +14,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/toolbar" android:id="@+id/post_job_toolbar"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_search"
+            android:id="@+id/...."
+            android:hint="Search Job Here.."
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="10dp"
+            android:drawableLeft="@drawable/ic_search"/>
+
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
