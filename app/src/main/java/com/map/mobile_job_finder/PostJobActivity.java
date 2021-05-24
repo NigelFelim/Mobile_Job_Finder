@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.map.mobile_job_finder.Model.Data;
 
 public class PostJobActivity extends AppCompatActivity {
@@ -40,6 +44,8 @@ public class PostJobActivity extends AppCompatActivity {
     //firebase
     private FirebaseAuth mAuth;
     private DatabaseReference JobPostDataBase;
+
+    private EditText edtSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,6 +122,30 @@ public class PostJobActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),InsertJobPostActivity.class));
             }
         });
+
+        //search bar
+        LoadData("");
+        edtSearch = findViewById(R.id.searchbarpost);
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString()!=null){
+                    LoadData(s.toString());
+                }
+                else {
+                    LoadData("");
+                }            }
+        });
     }
     //toolbar
     @Override
@@ -127,10 +157,12 @@ public class PostJobActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onStart(){
-        super.onStart();
-        FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(JobPostDataBase, Data.class).build();FirebaseRecyclerAdapter<Data, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Data, MyViewHolder>(firebaseRecyclerOptions) {
+//    @Override
+    public void LoadData(String s){
+//        super.onStart();
+        Query query = JobPostDataBase.orderByChild("title").startAt(s).endAt(s+"\uf8ff");
+
+        FirebaseRecyclerOptions<Data> firebaseRecyclerOptions = new FirebaseRecyclerOptions.Builder<Data>().setQuery(query, Data.class).build();FirebaseRecyclerAdapter<Data, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Data, MyViewHolder>(firebaseRecyclerOptions) {
 
             @NonNull
             @Override
