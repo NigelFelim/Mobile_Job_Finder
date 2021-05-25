@@ -55,11 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         currentLocation();
 
-//
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-
-
-
     }
 
     private class GetPlaces extends AsyncTask<Void, Void, ArrayList<Place>> {
@@ -127,8 +123,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -165,7 +159,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private LocationListener listener = new LocationListener() {
-
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
 
@@ -193,7 +186,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onSearch(View v){
         switch (v.getId()){
             case R.id.btn_search:
-
                 Intent mapsIntent = getIntent();
                 String address =  mapsIntent.getStringExtra("locationMaps");
                 tvSearch = findViewById(R.id.tv_location_maps);

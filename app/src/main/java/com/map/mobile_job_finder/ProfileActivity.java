@@ -75,7 +75,6 @@ public class ProfileActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }
-
                 return true;
             }
         });

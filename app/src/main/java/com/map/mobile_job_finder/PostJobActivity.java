@@ -95,7 +95,6 @@ public class PostJobActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }
-
                 return true;
             }
         });
@@ -144,7 +143,8 @@ public class PostJobActivity extends AppCompatActivity {
                 }
                 else {
                     LoadData("");
-                }            }
+                }
+            }
         });
     }
     //toolbar
@@ -173,7 +173,6 @@ public class PostJobActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder viewHolder, int i, @NonNull Data model) {
-
                 viewHolder.setJobTitle(model.getTitle());
                 viewHolder.setJobDate(model.getDate());
                 viewHolder.setJobDescription(model.getDescription());
@@ -181,12 +180,12 @@ public class PostJobActivity extends AppCompatActivity {
                 viewHolder.setJobSalary(model.getSalary());
                 viewHolder.setJobLocation(model.getLocation());
             }
-
         };
         adapter.startListening();
 
         recyclerView.setAdapter(adapter);
     }
+
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         View myview;
         public MyViewHolder(View itemView){

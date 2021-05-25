@@ -21,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
     private EditText etRegEmail, etRegPassword, etRetypePassword, etRegNama;
     private Button btnRegister;
-
     private TextView tvSignIn, tvIncorrectRetype;
     private ProgressDialog mDialog;
 
@@ -34,10 +33,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
         mDialog = new ProgressDialog(this);
-
         Registration();
     }
-
 
     private void Registration() {
         etRegNama = findViewById(R.id.etRegNama);
@@ -59,8 +56,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View view) {
                 String email = etRegEmail.getText().toString().trim();
@@ -72,7 +67,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(pass)) {
                     etRegPassword.setError("Required field..");
                     return;
-
                 }
                 mDialog.setMessage("Processing..");
                 mDialog.show();

@@ -43,7 +43,6 @@ public class InsertJobPostActivity extends AppCompatActivity {
     private DatabaseReference mJobPost;
     private DatabaseReference mPublicDatabase;
     //end firebase
-
     //end variable post job
 
     @Override
@@ -95,7 +94,6 @@ public class InsertJobPostActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }
-
                 return true;
             }
         });
@@ -158,7 +156,6 @@ public class InsertJobPostActivity extends AppCompatActivity {
                 mPublicDatabase.child(id).setValue(data);
                 Toast.makeText(getApplicationContext(), " Sucessfull", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), PostJobActivity.class));
-
             }
         });
     }

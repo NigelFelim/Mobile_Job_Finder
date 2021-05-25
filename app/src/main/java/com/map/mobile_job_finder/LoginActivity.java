@@ -24,15 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvRegister, tvIncorrect;
     private FirebaseAuth mAuth;
     private ProgressDialog mDialog;
-
-
-
-
-
-
     private static final int REQUEST_PERMISSION = 12345;
     private static final int PERMISSION_COUNT = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +34,11 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
         mDialog=new ProgressDialog(this);
         LoginFunction();
     }
 
     private void LoginFunction(){
-
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnSignIn = findViewById(R.id.btnSignIn);
@@ -58,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String mEmail = etEmail.getText().toString().trim();
                 String pass = etPassword.getText().toString().trim();
 
@@ -78,15 +68,12 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(getApplicationContext(),"Sucessful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
-
                             mDialog.dismiss();
                         }else {
                             Toast.makeText(getApplicationContext(),"Login failed..",Toast.LENGTH_SHORT).show();
                         }
                     }
                 }));
-
-
             }
         });
 

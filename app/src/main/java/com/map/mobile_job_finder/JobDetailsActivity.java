@@ -39,7 +39,6 @@ public class JobDetailsActivity extends AppCompatActivity {
     //end toolbar
 
     TextView mTitle, mDate, mDesc, mSkills, mSalary;
-
     Button btnlocate;
 
     //upload
@@ -47,8 +46,6 @@ public class JobDetailsActivity extends AppCompatActivity {
     EditText edtUpload;
     StorageReference storageReference;
     DatabaseReference databaseReference;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +95,6 @@ public class JobDetailsActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                 }
-
                 return true;
             }
         });
@@ -110,7 +106,6 @@ public class JobDetailsActivity extends AppCompatActivity {
         mSkills = findViewById(R.id.tv_skills_details);
         mSalary = findViewById(R.id.tv_salary_details);
 
-
         //menerima data
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
@@ -120,25 +115,20 @@ public class JobDetailsActivity extends AppCompatActivity {
         String salary = intent.getStringExtra("salary");
         String location = intent.getStringExtra("location");
 
-
         mTitle.setText(title);
         mDate.setText(date);
         mDesc.setText(description);
         mSkills.setText(skills);
         mSalary.setText(salary);
 
-
         //location button
         btnlocate = findViewById(R.id.btn_locationss);
         btnlocate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent mapsIntent = new Intent(getApplicationContext(),MapsActivity.class);
-
                 mapsIntent.putExtra("locationMaps",location);
                 startActivity(mapsIntent);
-
             }
         });
         //upload
@@ -168,7 +158,6 @@ public class JobDetailsActivity extends AppCompatActivity {
         // Optionally, specify a URI for the directory that should be opened in
         // the system file picker when your app creates the document.
         intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
-
         startActivityForResult(intent, CREATE_FILE);
     }
 
@@ -182,7 +171,6 @@ public class JobDetailsActivity extends AppCompatActivity {
         // Optionally, specify a URI for the file that should appear in the
         // system file picker when it loads.
         intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
-
         startActivityForResult(intent, PICK_PDF_FILE);
     }
 
@@ -197,7 +185,6 @@ public class JobDetailsActivity extends AppCompatActivity {
         // Optionally, specify a URI for the directory that should be opened in
         // the system file picker when it loads.
         intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, uriToLoad);
-
         startActivityForResult(intent, 12);
     }
 
@@ -206,7 +193,6 @@ public class JobDetailsActivity extends AppCompatActivity {
         intent.setType("application/pdf");
         intent.setAction(intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"File Select"),12);
-
     }
 
     @Override
