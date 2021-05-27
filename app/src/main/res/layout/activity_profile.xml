@@ -16,8 +16,7 @@
         android:orientation="vertical">
         <include layout="@layout/toolbar" android:id="@+id/profile_toolbar" />
         <ImageView
-            android:text="Select Photo"
-            android:id="@+id/foto"
+            android:id="@+id/edt_upload"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:src="@drawable/ic_profile"

@@ -5,7 +5,7 @@ public class putFile {
     public String namefile;
     public String url;
 
-    public putFile(){}
+    public putFile(String s){}
     public putFile(String namefile, String url){
         this.namefile = namefile;
         this.url = url;

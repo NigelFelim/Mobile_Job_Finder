@@ -44,13 +44,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     //upload
     Button btnUpload;
-    EditText edtUpload;
+    ImageView edtUpload;
     StorageReference storageReference;
     DatabaseReference databaseReference;
 
 
     private TextView namaProfile, emailProfile;
-    private ImageView fotoProfile;
+    private EditText fotoProfile;
     private Uri imageUri;
     private static final int PICK_IMAGE = 1;
 
@@ -110,7 +110,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         namaProfile = findViewById(R.id.namap);
         emailProfile = findViewById(R.id.emailp);
-        fotoProfile = findViewById(R.id.foto);
+        edtUpload = findViewById(R.id.edt_upload);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -129,10 +129,10 @@ public class ProfileActivity extends AppCompatActivity {
         edtUpload=findViewById(R.id.edt_upload);
 
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference("uploadFile");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Foto");
         btnUpload.setEnabled(false);
 
-        fotoProfile.setOnClickListener(new View.OnClickListener() {
+        edtUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent gantiFoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -142,31 +142,43 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == PICK_IMAGE || resultCode == RESULT_OK || data != null || data.getData() != null) {
-            imageUri = data.getData();
-            fotoProfile.setImageURI(imageUri);
+        if (requestCode == PICK_IMAGE || resultCode == RESULT_OK || data != null || data.getData() != null) {
 
-            uploadImagekeFirebase(imageUri);
+            Uri imageUri = null;
+            if (data != null) {
+                imageUri = data.getData();
+
+            }
+            btnUpload.setEnabled(true);
+            edtUpload.setImageURI(Uri.parse(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1)));
+
+            btnUpload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    uploadImagekeFirebase(data.getData());
+                }
+
+            });
         }
     }
 
-    private void uploadImagekeFirebase(Uri imageUri) {
+    private void uploadImagekeFirebase(Uri data) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("File is loading...");
         progressDialog.show();
 
         StorageReference reference= storageReference.child("upload"+System.currentTimeMillis()+".jpeg");
 
-        reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Task<Uri> uriTask=  taskSnapshot.getStorage().getDownloadUrl();
                 while(!uriTask.isComplete());
                 Uri uri  = uriTask.getResult();
-                Foto Foto=new Foto(edtUpload.getText().toString(), uri.toString());
+                Foto Foto =new Foto(edtUpload.getImageMatrix().toShortString());
                 databaseReference.child(databaseReference.push().getKey()).setValue(Foto);
                 Toast.makeText(ProfileActivity.this,"File Upload",Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();

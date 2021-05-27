@@ -5,7 +5,7 @@ public class Foto {
     public String url;
 
     public Foto(){}
-    public Foto(String photos, String url){
+    public Foto(String photos){
         this.photos = photos;
         this.url = url;
     }
