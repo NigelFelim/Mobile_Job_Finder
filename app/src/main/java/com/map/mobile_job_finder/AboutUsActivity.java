@@ -10,9 +10,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class AboutUsActivity extends AppCompatActivity {
 
@@ -76,5 +80,15 @@ public class AboutUsActivity extends AppCompatActivity {
             }
         });
         //end toolbar
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+
+            View headerView = navigationView.getHeaderView(0);
+            TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
+            tvNama.setText(email);
+        }
     }
 }

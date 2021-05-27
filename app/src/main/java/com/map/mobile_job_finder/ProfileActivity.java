@@ -100,6 +100,10 @@ public class ProfileActivity extends AppCompatActivity {
 
             namaProfile.setText(name);
             emailProfile.setText(email);
+
+            View headerView = navigationView.getHeaderView(0);
+            TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
+            tvNama.setText(email);
         }
 
         //Menerima data

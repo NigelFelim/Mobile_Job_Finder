@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnSeeJob, btnPostJob;
@@ -75,6 +77,17 @@ public class MainActivity extends AppCompatActivity {
         // end toolbar
 
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
+        String uId = mUser.getUid();
+
+        if (mUser != null) {
+            String name = mUser.getDisplayName();
+            String email = mUser.getEmail();
+
+            View headerView = navigationView.getHeaderView(0);
+            TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
+            tvNama.setText(email);
+        }
 
         btnSeeJob = findViewById(R.id.btnSeeJob);
         btnPostJob = findViewById(R.id.btnPostJob);

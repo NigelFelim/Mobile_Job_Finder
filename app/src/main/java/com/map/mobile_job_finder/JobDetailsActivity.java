@@ -23,6 +23,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -99,6 +101,16 @@ public class JobDetailsActivity extends AppCompatActivity {
             }
         });
         //end toolbar
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+
+            View headerView = navigationView.getHeaderView(0);
+            TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
+            tvNama.setText(email);
+        }
 
         mTitle = findViewById(R.id.tv_title_details);
         mDate = findViewById(R.id.tv_date_details);

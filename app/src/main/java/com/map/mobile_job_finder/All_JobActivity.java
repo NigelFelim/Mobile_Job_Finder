@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -97,6 +99,17 @@ public class All_JobActivity extends AppCompatActivity {
             }
         });
         // end toolbar
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+
+            View headerView = navigationView.getHeaderView(0);
+            TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
+            tvNama.setText(email);
+        }
+
         mAllJobPost = FirebaseDatabase.getInstance().getReference().child("Public Database");
         mAllJobPost.keepSynced(true);
 

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -103,6 +104,15 @@ public class InsertJobPostActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
         String uId = mUser.getUid();
+
+        if (mUser != null) {
+            String name = mUser.getDisplayName();
+            String email = mUser.getEmail();
+
+            View headerView = navigationView.getHeaderView(0);
+            TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
+            tvNama.setText(email);
+        }
 
         mJobPost = FirebaseDatabase.getInstance().getReference().child("Job Post").child(uId);
         mPublicDatabase = FirebaseDatabase.getInstance().getReference().child("Public Database");

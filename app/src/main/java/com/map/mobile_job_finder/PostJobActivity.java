@@ -103,6 +103,15 @@ public class PostJobActivity extends AppCompatActivity {
         FirebaseUser mUser = mAuth.getCurrentUser();
         String uId = mUser.getUid();
 
+        if (mUser != null) {
+            String name = mUser.getDisplayName();
+            String email = mUser.getEmail();
+
+            View headerView = navigationView.getHeaderView(0);
+            TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
+            tvNama.setText(email);
+        }
+
         JobPostDataBase=FirebaseDatabase.getInstance().getReference().child("Job Post").child(uId);
 
         recyclerView=findViewById(R.id.recycle_job_post);

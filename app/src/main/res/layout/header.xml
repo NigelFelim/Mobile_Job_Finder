@@ -16,5 +16,5 @@
         android:layout_height="wrap_content"
         android:text="nama"
         android:textSize="14sp"
-        android:id="@+id/etRegNama"/>
+        android:id="@+id/tvNama"/>
 </LinearLayout>
