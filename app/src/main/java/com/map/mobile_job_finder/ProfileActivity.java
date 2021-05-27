@@ -1,11 +1,14 @@
 package com.map.mobile_job_finder;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,10 +21,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.map.mobile_job_finder.Model.Foto;
+import com.map.mobile_job_finder.Model.putFile;
 
 public class ProfileActivity extends AppCompatActivity {
     //toolbar
@@ -29,6 +41,13 @@ public class ProfileActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     //end toolbar
+
+    //upload
+    Button btnUpload;
+    EditText edtUpload;
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
+
 
     private TextView namaProfile, emailProfile;
     private ImageView fotoProfile;
@@ -103,18 +122,15 @@ public class ProfileActivity extends AppCompatActivity {
 
             View headerView = navigationView.getHeaderView(0);
             TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
-            tvNama.setText(email);
+            tvNama.setText(name);
         }
 
-        //Menerima data
-        //Intent intent = getIntent();
-        //String name = intent.getStringExtra("name");
-        //String email = intent.getStringExtra("email");
-        //Uri foto = intent.getData();
+        btnUpload = findViewById(R.id.btn_uploadfile);
+        edtUpload=findViewById(R.id.edt_upload);
 
-        //namaProfile.setText(name);
-        //emailProfile.setText(email);
-        //fotoProfile.setImageURI(Uri.parse(foto));
+        storageReference = FirebaseStorage.getInstance().getReference();
+        databaseReference= FirebaseDatabase.getInstance().getReference("uploadFile");
+        btnUpload.setEnabled(false);
 
         fotoProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +154,30 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void uploadImagekeFirebase(Uri imageUri) {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("File is loading...");
+        progressDialog.show();
+
+        StorageReference reference= storageReference.child("upload"+System.currentTimeMillis()+".jpeg");
+
+        reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> uriTask=  taskSnapshot.getStorage().getDownloadUrl();
+                while(!uriTask.isComplete());
+                Uri uri  = uriTask.getResult();
+                Foto Foto=new Foto(edtUpload.getText().toString(), uri.toString());
+                databaseReference.child(databaseReference.push().getKey()).setValue(Foto);
+                Toast.makeText(ProfileActivity.this,"File Upload",Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progress=(100.0*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                progressDialog.setMessage("File uploaded.."+(int) progress+"%");
+            }
+        });
 
     }
 }
