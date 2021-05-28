@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,13 +45,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     //upload
     Button btnUpload;
-    ImageView edtUpload;
+    EditText edtUpload;
     StorageReference storageReference;
     DatabaseReference databaseReference;
 
 
     private TextView namaProfile, emailProfile;
-    private EditText fotoProfile;
+    private ImageButton fotoProfile;
     private Uri imageUri;
     private static final int PICK_IMAGE = 1;
 
@@ -110,7 +111,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         namaProfile = findViewById(R.id.namap);
         emailProfile = findViewById(R.id.emailp);
-        edtUpload = findViewById(R.id.edt_upload);
+//        fotoProfile= findViewById((R.id.foto);
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -153,7 +155,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
             btnUpload.setEnabled(true);
-            edtUpload.setImageURI(Uri.parse(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1)));
+            edtUpload.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
 
             btnUpload.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -178,7 +180,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Task<Uri> uriTask=  taskSnapshot.getStorage().getDownloadUrl();
                 while(!uriTask.isComplete());
                 Uri uri  = uriTask.getResult();
-                Foto Foto =new Foto(edtUpload.getImageMatrix().toShortString());
+                Foto Foto =new Foto(edtUpload.getText().toString(), uri.toString());
                 databaseReference.child(databaseReference.push().getKey()).setValue(Foto);
                 Toast.makeText(ProfileActivity.this,"File Upload",Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();

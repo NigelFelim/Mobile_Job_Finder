@@ -15,7 +15,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/toolbar" android:id="@+id/profile_toolbar" />
-        <ImageView
+        <EditText
+            android:text="Insert Photos"
             android:layout_marginTop="20dp"
             android:id="@+id/edt_upload"
             android:layout_width="140dp"

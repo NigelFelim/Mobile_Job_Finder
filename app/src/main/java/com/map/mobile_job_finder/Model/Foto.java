@@ -1,14 +1,17 @@
 package com.map.mobile_job_finder.Model;
 
+import android.text.Editable;
+
 public class Foto {
     public String photos;
     public String url;
 
-    public Foto(){}
-    public Foto(String photos){
+    public Foto(String s){}
+    public Foto(String photos,String url){
         this.photos = photos;
         this.url = url;
     }
+
 
     public String getNamefile() {
         return photos;
