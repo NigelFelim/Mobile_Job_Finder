@@ -51,7 +51,8 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private TextView namaProfile, emailProfile;
-    private ImageButton fotoProfile;
+    //private ImageButton fotoProfile;
+    private ImageView fotoProfile;
     private Uri imageUri;
     private static final int PICK_IMAGE = 1;
 
@@ -111,8 +112,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         namaProfile = findViewById(R.id.namap);
         emailProfile = findViewById(R.id.emailp);
-//        fotoProfile= findViewById((R.id.foto);
-
+        fotoProfile= findViewById(R.id.fotoProfil);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -124,7 +124,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             View headerView = navigationView.getHeaderView(0);
             TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
-            tvNama.setText(name);
+            tvNama.setText(email);
         }
 
         btnUpload = findViewById(R.id.btn_uploadfile);
@@ -134,7 +134,7 @@ public class ProfileActivity extends AppCompatActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference("Foto");
         btnUpload.setEnabled(false);
 
-        edtUpload.setOnClickListener(new View.OnClickListener() {
+        fotoProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent gantiFoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -149,32 +149,48 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE || resultCode == RESULT_OK || data != null || data.getData() != null) {
 
-            Uri imageUri = null;
+            imageUri = null;
             if (data != null) {
                 imageUri = data.getData();
-
+                fotoProfile.setImageURI(imageUri);
             }
             btnUpload.setEnabled(true);
-            edtUpload.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
+            //edtUpload.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
 
             btnUpload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    uploadImagekeFirebase(data.getData());
+                    uploadImagekeFirebase(imageUri);
                 }
 
             });
         }
     }
 
-    private void uploadImagekeFirebase(Uri data) {
+    private void uploadImagekeFirebase(Uri imageUri) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("File is loading...");
         progressDialog.show();
 
-        StorageReference reference= storageReference.child("upload"+System.currentTimeMillis()+".jpeg");
+        StorageReference reference= storageReference.child("upload profile"+System.currentTimeMillis()+".jpeg");
+        reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                while(!uriTask.isComplete());
+                Uri uri  = uriTask.getResult();
+                Toast.makeText(ProfileActivity.this,"File Upload",Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progress=(100.0*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+                progressDialog.setMessage("File uploaded.."+(int) progress+"%");
+            }
+        });
 
-        reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        /*reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Task<Uri> uriTask=  taskSnapshot.getStorage().getDownloadUrl();
@@ -191,7 +207,7 @@ public class ProfileActivity extends AppCompatActivity {
                 double progress=(100.0*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
                 progressDialog.setMessage("File uploaded.."+(int) progress+"%");
             }
-        });
+        });*/
 
     }
 }
