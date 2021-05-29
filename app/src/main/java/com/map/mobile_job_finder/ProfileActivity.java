@@ -35,6 +35,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.map.mobile_job_finder.Model.Foto;
 import com.map.mobile_job_finder.Model.putFile;
+import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
     //toolbar
@@ -48,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
     EditText edtUpload;
     StorageReference storageReference;
     DatabaseReference databaseReference;
-
+    FirebaseUser user;
 
     private TextView namaProfile, emailProfile;
     //private ImageButton fotoProfile;
@@ -113,8 +114,14 @@ public class ProfileActivity extends AppCompatActivity {
         namaProfile = findViewById(R.id.namap);
         emailProfile = findViewById(R.id.emailp);
         fotoProfile= findViewById(R.id.fotoProfil);
+        btnUpload = findViewById(R.id.btn_uploadfile);
+        edtUpload=findViewById(R.id.edt_upload);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        databaseReference= FirebaseDatabase.getInstance().getReference("Foto");
+        btnUpload.setEnabled(false);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String name = user.getDisplayName();
             String email = user.getEmail();
@@ -122,17 +129,18 @@ public class ProfileActivity extends AppCompatActivity {
             namaProfile.setText(name);
             emailProfile.setText(email);
 
+            StorageReference reference= storageReference.child("users/"+user.getUid()+".jpeg");
+            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(fotoProfile);
+                }
+            });
+
             View headerView = navigationView.getHeaderView(0);
             TextView tvNama = (TextView) headerView.findViewById(R.id.tvNama);
             tvNama.setText(email);
         }
-
-        btnUpload = findViewById(R.id.btn_uploadfile);
-        edtUpload=findViewById(R.id.edt_upload);
-
-        storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference("Foto");
-        btnUpload.setEnabled(false);
 
         fotoProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,13 +180,19 @@ public class ProfileActivity extends AppCompatActivity {
         progressDialog.setTitle("File is loading...");
         progressDialog.show();
 
-        StorageReference reference= storageReference.child("upload profile"+System.currentTimeMillis()+".jpeg");
+        final StorageReference reference= storageReference.child("users/"+user.getUid()+".jpeg");
         reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                 while(!uriTask.isComplete());
-                Uri uri  = uriTask.getResult();
+                Uri uri = uriTask.getResult();
+                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(fotoProfile);
+                    }
+                });
                 Toast.makeText(ProfileActivity.this,"File Upload",Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }
