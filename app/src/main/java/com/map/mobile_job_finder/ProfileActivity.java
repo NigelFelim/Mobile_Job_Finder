@@ -46,13 +46,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     //upload
     Button btnUpload;
-    EditText edtUpload;
+
     StorageReference storageReference;
     DatabaseReference databaseReference;
     FirebaseUser user;
 
     private TextView namaProfile, emailProfile;
-    //private ImageButton fotoProfile;
     private ImageView fotoProfile;
     private Uri imageUri;
     private static final int PICK_IMAGE = 1;
@@ -115,7 +114,6 @@ public class ProfileActivity extends AppCompatActivity {
         emailProfile = findViewById(R.id.emailp);
         fotoProfile= findViewById(R.id.fotoProfil);
         btnUpload = findViewById(R.id.btn_uploadfile);
-        edtUpload=findViewById(R.id.edt_upload);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference= FirebaseDatabase.getInstance().getReference("Foto");
@@ -163,7 +161,6 @@ public class ProfileActivity extends AppCompatActivity {
                 fotoProfile.setImageURI(imageUri);
             }
             btnUpload.setEnabled(true);
-            //edtUpload.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
 
             btnUpload.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -203,25 +200,5 @@ public class ProfileActivity extends AppCompatActivity {
                 progressDialog.setMessage("File uploaded.."+(int) progress+"%");
             }
         });
-
-        /*reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask=  taskSnapshot.getStorage().getDownloadUrl();
-                while(!uriTask.isComplete());
-                Uri uri  = uriTask.getResult();
-                Foto Foto =new Foto(edtUpload.getText().toString(), uri.toString());
-                databaseReference.child(databaseReference.push().getKey()).setValue(Foto);
-                Toast.makeText(ProfileActivity.this,"File Upload",Toast.LENGTH_LONG).show();
-                progressDialog.dismiss();
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                double progress=(100.0*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-                progressDialog.setMessage("File uploaded.."+(int) progress+"%");
-            }
-        });*/
-
     }
 }
