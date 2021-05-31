@@ -77,8 +77,10 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Sucessful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                             mDialog.dismiss();
+                            finish();
                         } else{
                             Toast.makeText(getApplicationContext(),"Registration Failed ...  ",Toast.LENGTH_SHORT).show();
+                            mDialog.dismiss();
                         }
                     }
                 });

@@ -90,6 +90,7 @@ public class All_JobActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Logout",Toast.LENGTH_LONG).show();
                         Intent AllJob_ke_Logout = new Intent(All_JobActivity.this, LoginActivity.class);
                         startActivityForResult(AllJob_ke_Logout, 8);
+                        FirebaseAuth.getInstance().signOut();
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -91,6 +92,7 @@ public class PostJobActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
                         Intent PostJob_ke_Logout = new Intent(PostJobActivity.this, LoginActivity.class);
                         startActivityForResult(PostJob_ke_Logout, 11);
+                        FirebaseAuth.getInstance().signOut();
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
@@ -155,6 +157,24 @@ public class PostJobActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /*ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int posisi = viewHolder.getAdapterPosition();
+
+                if(direction == ItemTouchHelper.LEFT) {
+                    Toast.makeText(PostJobActivity.this, "Data Deleted", Toast.LENGTH_LONG).show();
+                    JobPostDataBase.removeValue();
+                }
+            }
+        });
+        helper.attachToRecyclerView(recyclerView); */
     }
     //toolbar
     @Override

@@ -71,6 +71,7 @@ public class AboutUsActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
                         Intent AboutUs_ke_Logout = new Intent(AboutUsActivity.this, LoginActivity.class);
                         startActivityForResult(AboutUs_ke_Logout, 30);
+                        FirebaseAuth.getInstance().signOut();
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

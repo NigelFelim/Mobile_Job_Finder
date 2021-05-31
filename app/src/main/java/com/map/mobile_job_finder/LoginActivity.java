@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
@@ -36,6 +37,17 @@ public class LoginActivity extends AppCompatActivity {
 
         mDialog=new ProgressDialog(this);
         LoginFunction();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent langsungLogin = new Intent(LoginActivity.this, MainActivity.class);
+            startActivityForResult(langsungLogin, -1);
+        }
     }
 
     private void LoginFunction(){
@@ -69,8 +81,10 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Sucessful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             mDialog.dismiss();
+                            finish();
                         }else {
                             Toast.makeText(getApplicationContext(),"Login failed..",Toast.LENGTH_SHORT).show();
+                            mDialog.dismiss();
                         }
                     }
                 }));

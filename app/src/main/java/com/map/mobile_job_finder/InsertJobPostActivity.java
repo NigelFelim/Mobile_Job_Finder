@@ -91,6 +91,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
                         Intent InsertJob_ke_Logout = new Intent(InsertJobPostActivity.this, LoginActivity.class);
                         startActivityForResult(InsertJob_ke_Logout, 14);
+                        FirebaseAuth.getInstance().signOut();
                         finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
