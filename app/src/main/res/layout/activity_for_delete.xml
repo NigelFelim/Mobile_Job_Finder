@@ -63,44 +63,19 @@
             android:textAppearance="?android:textAppearanceMedium"
             android:id="@+id/tv_salary_details"/>
         <Button
-            android:layout_width="140dp"
+            android:layout_width="170dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:padding="5dp"
             android:textAlignment="center"
             android:textSize="20dp"
-            android:text="See Location"
+            android:text="Delete"
             android:background="@drawable/btn_activity_main"
             android:textColor="@color/white"
             android:fontFamily="@font/roboto_medium"
             android:textAppearance="?android:textAppearanceMedium"
-            android:id="@+id/btn_locationss"/>
-        <EditText
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:textAlignment="center"
-            android:hint="select file to apply job"
-            android:textSize="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:id="@+id/edt_upload"/>
-        <Button
-            android:layout_width="170dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:text="Upload"
-            android:background="@drawable/btn_activity_main"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto_medium"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:id="@+id/btn_uploadfile"/>
+            android:id="@+id/btn_deletedata"/>
 
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView

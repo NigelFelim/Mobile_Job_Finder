@@ -132,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
             reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).into(fotoProfile);
+                    Picasso.get().load(uri).fit().into(fotoProfile);
                 }
             });
 

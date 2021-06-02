@@ -157,25 +157,8 @@ public class PostJobActivity extends AppCompatActivity {
                 }
             }
         });
-
-        /*ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                int posisi = viewHolder.getAdapterPosition();
-
-                if(direction == ItemTouchHelper.LEFT) {
-                    Toast.makeText(PostJobActivity.this, "Data Deleted", Toast.LENGTH_LONG).show();
-                    JobPostDataBase.removeValue();
-                }
-            }
-        });
-        helper.attachToRecyclerView(recyclerView); */
     }
+
     //toolbar
     @Override
     public void onBackPressed () {
@@ -208,6 +191,26 @@ public class PostJobActivity extends AppCompatActivity {
                 viewHolder.setJobSkills(model.getSkills());
                 viewHolder.setJobSalary(model.getSalary());
                 viewHolder.setJobLocation(model.getLocation());
+
+                viewHolder.myview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(getApplicationContext(), forDeleteActivity.class);
+
+                        intent.putExtra("title", model.getTitle());
+                        intent.putExtra("date", model.getDate());
+                        intent.putExtra("description", model.getDescription());
+                        intent.putExtra("skills", model.getSkills());
+                        intent.putExtra("salary", model.getSalary());
+                        intent.putExtra("location",model.getLocation());
+                        intent.putExtra("id", model.getId());
+
+                        startActivity(intent);
+
+
+                    }
+                });
             }
         };
         adapter.startListening();

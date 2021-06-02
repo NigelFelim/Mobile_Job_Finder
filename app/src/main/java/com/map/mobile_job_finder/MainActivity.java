@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    private long pressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //toolbar
+    @Override
+    public void onBackPressed () {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+            finish();
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

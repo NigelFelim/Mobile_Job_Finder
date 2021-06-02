@@ -167,6 +167,7 @@ public class InsertJobPostActivity extends AppCompatActivity {
                 mPublicDatabase.child(id).setValue(data);
                 Toast.makeText(getApplicationContext(), " Sucessfull", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), PostJobActivity.class));
+                finish();
             }
         });
     }
