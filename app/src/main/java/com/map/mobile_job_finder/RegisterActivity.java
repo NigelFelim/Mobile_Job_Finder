@@ -60,6 +60,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = etRegEmail.getText().toString().trim();
                 String pass = etRegPassword.getText().toString().trim();
+                String retypePass = etRetypePassword.getText().toString().trim();
+
                 if (TextUtils.isEmpty(email)) {
                     etRegEmail.setError("Required field..");
                     return;
@@ -68,22 +70,35 @@ public class RegisterActivity extends AppCompatActivity {
                     etRegPassword.setError("Required field..");
                     return;
                 }
-                mDialog.setMessage("Processing..");
-                mDialog.show();
-                mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Sucessful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                            mDialog.dismiss();
-                            finish();
-                        } else{
-                            Toast.makeText(getApplicationContext(),"Registration Failed ...  ",Toast.LENGTH_SHORT).show();
-                            mDialog.dismiss();
+                if (TextUtils.getTrimmedLength(pass) < 6) {
+                    etRegPassword.setError("Minimum 6 Characters");
+                    return;
+                }
+                if (TextUtils.isEmpty(retypePass)) {
+                    etRetypePassword.setError("Required field..");
+                    return;
+                }
+                if (retypePass.equals(pass)) {
+                    mDialog.setMessage("Processing..");
+                    mDialog.show();
+                    mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Sucessful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                mDialog.dismiss();
+                                finish();
+                            } else{
+                                Toast.makeText(getApplicationContext(),"Registration Failed ...  ",Toast.LENGTH_SHORT).show();
+                                mDialog.dismiss();
+                            }
                         }
-                    }
-                });
+                    });
+                } else {
+                    etRetypePassword.setError("Does not match the password");
+                    return;
+                }
             }
         });
     }
