@@ -111,7 +111,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
         //end toolbar
 
-        namaProfile = findViewById(R.id.namap);
+        //namaProfile = findViewById(R.id.namap);
         emailProfile = findViewById(R.id.emailp);
         fotoProfile= findViewById(R.id.fotoProfil);
         btnUpload = findViewById(R.id.btn_uploadfile);
@@ -125,7 +125,7 @@ public class ProfileActivity extends AppCompatActivity {
             String name = user.getDisplayName();
             String email = user.getEmail();
 
-            namaProfile.setText(name);
+            //namaProfile.setText(name);
             emailProfile.setText(email);
 
             StorageReference reference= storageReference.child("users/"+user.getUid()+".jpeg");

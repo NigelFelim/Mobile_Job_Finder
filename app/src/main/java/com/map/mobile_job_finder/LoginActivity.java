@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         }else {
                             Toast.makeText(getApplicationContext(),"Login failed..",Toast.LENGTH_SHORT).show();
+                            tvIncorrect.setVisibility(View.VISIBLE);
                             mDialog.dismiss();
                         }
                     }
