@@ -59,12 +59,14 @@ public class AboutUsActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "My Profile", Toast.LENGTH_LONG).show();
                         Intent AboutUs_ke_Profile = new Intent(AboutUsActivity.this, ProfileActivity.class);
                         startActivityForResult(AboutUs_ke_Profile, 28);
+                        finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnAboutUs:
                         Toast.makeText(getApplicationContext(), "About The Creators", Toast.LENGTH_LONG).show();
                         Intent AboutUs_ke_AboutUS = new Intent(AboutUsActivity.this, AboutUsActivity.class);
                         startActivityForResult(AboutUs_ke_AboutUS, 29);
+                        finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:

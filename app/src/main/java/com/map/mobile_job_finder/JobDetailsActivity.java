@@ -81,12 +81,14 @@ public class JobDetailsActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "My Profile", Toast.LENGTH_LONG).show();
                         Intent JobDetail_ke_Profile = new Intent(JobDetailsActivity.this, ProfileActivity.class);
                         startActivityForResult(JobDetail_ke_Profile, 16);
+                        finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnAboutUs:
                         Toast.makeText(getApplicationContext(), "About The Creators", Toast.LENGTH_LONG).show();
                         Intent JobDetail_ke_AboutUS = new Intent(JobDetailsActivity.this, AboutUsActivity.class);
                         startActivityForResult(JobDetail_ke_AboutUS, 23);
+                        finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:

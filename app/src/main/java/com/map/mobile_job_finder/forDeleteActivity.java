@@ -78,12 +78,14 @@ public class forDeleteActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "My Profile", Toast.LENGTH_LONG).show();
                         Intent JobDetail_ke_Profile = new Intent(forDeleteActivity.this, ProfileActivity.class);
                         startActivityForResult(JobDetail_ke_Profile, -20);
+                        finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnAboutUs:
                         Toast.makeText(getApplicationContext(), "About The Creators", Toast.LENGTH_LONG).show();
                         Intent JobDetail_ke_AboutUS = new Intent(forDeleteActivity.this, AboutUsActivity.class);
                         startActivityForResult(JobDetail_ke_AboutUS, -30);
+                        finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.btnLogout:
