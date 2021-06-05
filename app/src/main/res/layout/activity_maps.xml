@@ -41,7 +41,7 @@
         android:background="#359c5e"
         android:padding="8dp"
         android:layout_margin="5dp"
-        android:hint="location"
+        android:hint="location / Tekan Tombol Search"
         android:textColor="#ffffff"/>
 </RelativeLayout>
 

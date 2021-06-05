@@ -116,7 +116,8 @@ public class PostJobActivity extends AppCompatActivity {
             tvNama.setText(email);
         }
 
-        JobPostDataBase=FirebaseDatabase.getInstance().getReference().child("Job Post").child(uId);
+        JobPostDataBase=FirebaseDatabase.getInstance().getReference().child("Public Database");
+        JobPostDataBase.keepSynced(true);
 
         recyclerView=findViewById(R.id.recycle_job_post);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
