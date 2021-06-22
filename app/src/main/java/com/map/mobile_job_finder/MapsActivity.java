@@ -19,6 +19,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private Location loc;
     private TextView tvSearch;
+    private Button btnBack;
 
     private int PERMISSION_LOCATION = 1;
     @Override
@@ -85,9 +87,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        currentLocation();
+//        currentLocation();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(MapsActivity.this,All_JobActivity.class);
+                back.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(back);
+                finish();
+            }
+        });
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
@@ -172,34 +184,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return true;
     }
 
-    private void currentLocation() {
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        String provider = locationManager
-                .getBestProvider(new Criteria(), false);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Location location = locationManager.getLastKnownLocation(provider);
-
-        if (location == null) {
-            locationManager.requestLocationUpdates(provider, 0, 0, listener);
-        } else {
-            loc = location;
-            new GetPlaces(MapsActivity.this, places[0].toLowerCase().replace(
-                    "-", "_")).execute();
-            Log.e(TAG, "location : " + location);
-        }
-
-    }
+//    private void currentLocation() {
+//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//
+//        String provider = locationManager
+//                .getBestProvider(new Criteria(), false);
+//
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//        Location location = locationManager.getLastKnownLocation(provider);
+//
+//        if (location == null) {
+//            locationManager.requestLocationUpdates(provider, 0, 0, listener);
+//        } else {
+//            loc = location;
+//            new GetPlaces(MapsActivity.this, places[0].toLowerCase().replace(
+//                    "-", "_")).execute();
+//            Log.e(TAG, "location : " + location);
+//        }
+//
+//    }
 
     private LocationListener listener = new LocationListener() {
         @Override

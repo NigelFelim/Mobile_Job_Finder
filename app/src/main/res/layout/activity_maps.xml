@@ -32,6 +32,7 @@
         android:layout_margin="5dp"
         android:text="search"
         android:textColor="#ffffff"/>
+
     <TextView
         android:id="@+id/tv_location_maps"
         android:layout_width="match_parent"
@@ -42,6 +43,17 @@
         android:padding="8dp"
         android:layout_margin="5dp"
         android:hint="location / Tekan Tombol Search"
+        android:textColor="#ffffff"/>
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="#359c5e"
+        android:padding="8dp"
+        android:layout_margin="5dp"
+        android:text="back"
         android:textColor="#ffffff"/>
 </RelativeLayout>
 
